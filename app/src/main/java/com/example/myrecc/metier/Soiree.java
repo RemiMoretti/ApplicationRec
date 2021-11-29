@@ -3,16 +3,16 @@ package com.example.myrecc.metier;
 import java.time.LocalTime;
 import java.util.Date;
 
-public class Soirée {
+public class Soiree {
     //-----------------------------------------------------------------------
     //---------------------Déclarations des variables------------------------
     //-----------------------------------------------------------------------
-    private Utilisateur orga;
+    private CompteUtilisateur orga;
     private String adresse;
     private int CP;
     private String ville;
-    private Date date;
-    private LocalTime heure;
+    private String date;
+    private String heure;
     private String description;
     private boolean alcool;
     private boolean soireeOuverte;
@@ -20,7 +20,7 @@ public class Soirée {
     //-----------------------------------------------------------------------
     //-------------------------------Constructeur----------------------------
     //-----------------------------------------------------------------------
-    public Soirée(Utilisateur orga, String adresse, int CP, String ville, Date date, LocalTime heure, String description, boolean alcool, boolean soireeOuverte) {
+    public Soiree(CompteUtilisateur orga, String adresse, String ville,int CP, String date, String heure, String description, boolean alcool, boolean soireeOuverte) {
         this.orga = orga;
         this.adresse = adresse;
         this.CP = CP;
@@ -34,7 +34,7 @@ public class Soirée {
     //-----------------------------------------------------------------------
     //-------------------------------Getters---------------------------------
     //-----------------------------------------------------------------------
-    public Utilisateur getOrga() {
+    public CompteUtilisateur getOrga() {
         return orga;
     }
 
@@ -50,11 +50,11 @@ public class Soirée {
         return ville;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public LocalTime getHeure() {
+    public String getHeure() {
         return heure;
     }
 

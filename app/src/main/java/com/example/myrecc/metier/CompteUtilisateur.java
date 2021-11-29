@@ -1,6 +1,6 @@
 package com.example.myrecc.metier;
 
-public class Utilisateur {
+public class CompteUtilisateur {
 
     //-----------------------------------------------------------------------
     //---------------------Déclarations des variables------------------------
@@ -17,7 +17,7 @@ public class Utilisateur {
     //-----------------------------------------------------------------------
     //-------------------------------Constructeur----------------------------
     //-----------------------------------------------------------------------
-    public Utilisateur(String nom, String prenom, int age, String adresse, int CP, String mail, String login, String mdp) {
+    public CompteUtilisateur(String nom, String prenom, int age, String adresse, int CP, String mail, String login, String mdp) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
