@@ -1,6 +1,7 @@
 package com.example.myrecc.metier;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Soiree {
@@ -16,6 +17,7 @@ public class Soiree {
     private String description;
     private boolean alcool;
     private boolean soireeOuverte;
+    private ArrayList<CompteUtilisateur> participants = new ArrayList<CompteUtilisateur>();
 
     //-----------------------------------------------------------------------
     //-------------------------------Constructeur----------------------------
@@ -69,4 +71,17 @@ public class Soiree {
     public boolean isSoireeOuverte() {
         return soireeOuverte;
     }
+
+    public ArrayList<CompteUtilisateur> getParticipants() {
+        return participants;
+    }
+
+    //-----------------------------------------------------------------------
+    //----------------------------Patricipants-------------------------------
+    //-----------------------------------------------------------------------
+
+    public void ajoutParticipants(CompteUtilisateur utilisateur){
+        participants.add(utilisateur);
+    }
+
 }
