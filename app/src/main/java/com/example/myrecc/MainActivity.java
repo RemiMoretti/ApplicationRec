@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_login) {
-            Toast.makeText(this, "Cliqué sur l'action \"Se connecter\"", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_creersoiree) {
+            Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
             return true;
         }
-        else    if (id == R.id.action_signin) {
-            Toast.makeText(this, "Cliqué sur l'action \"S\'inscrire\"", Toast.LENGTH_SHORT).show();
+        else    if (id == R.id.action_recherchesoiree) {
+            Toast.makeText(this, "Cliqué sur l'action \"Recherche soirée\"", Toast.LENGTH_SHORT).show();
             return true;
         }
 

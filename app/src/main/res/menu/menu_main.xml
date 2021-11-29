@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.myrecc.MainActivity">
     <item
-        android:id="@+id/action_signin"
+        android:id="@+id/action_creersoiree"
         android:orderInCategory="100"
-        android:title="@string/action_signin"
+        android:title="@string/btCreaSoiree"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_login"
+        android:id="@+id/action_recherchesoiree"
         android:orderInCategory="200"
-        android:title="@string/action_login"
+        android:title="@string/action_recherchesoiree"
         app:showAsAction="never" />
 </menu>
