@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/activity_choix.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/fragment_second.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/activity_main.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/content_main.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/fragment_first.xml" value="0.2604166666666667" />
