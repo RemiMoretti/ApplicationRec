@@ -14,7 +14,11 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_recherchesoiree"
+            app:destination="@id/RechercheSoireeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.myrecc.SecondFragment"
@@ -25,4 +29,17 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <!--    Ajout du fragment recherche soiree a la navigation    -->
+
+    <fragment
+        android:id="@+id/RechercheSoireeFragment"
+        android:name="com.example.myrecc.RechercheSoireeFragment"
+        android:label="@string/recherche_soiree_label"
+        tools:layout="@layout/fragment_recherche_soiree">
+
+        <action
+            android:id="@+id/action_recherchesoiree_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
 </navigation>
