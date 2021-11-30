@@ -20,4 +20,12 @@
     <string name="liste_des_participants">Liste des participants</string>
     <string name="description_du_createur">Description du créateur</string>
     <string name="description_de_la_soiree">Description de la soirée</string>
+    <string name="date_de_la_soiree">Date de la soirée</string>
+    <string name="soiree_ouverte">Soirée ouverte?</string>
+    <string name="alcool">Alcool ?</string>
+    <string name="heure">Heure</string>
+    <string name="non">Non</string>
+    <string name="oui">Oui</string>
+    <string name="nom_de_la_soiree">Nom de la soirée</string>
+    <string name="type_de_soiree">Type de soirée</string>
 </resources>

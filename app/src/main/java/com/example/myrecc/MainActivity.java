@@ -12,6 +12,7 @@ import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -42,29 +43,29 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Création des faux utilisateurs
-        CompteUtilisateur cu1  = new CompteUtilisateur( "Pesquet"	, "Thomas"	,50,"rue spatial"				,17000,"thomas@nasa.com"		,"toto"			,"123");
-        CompteUtilisateur cu2  = new CompteUtilisateur( "Hollande"	, "François",55,"rue de la république"				,54211,"holland@elysé.com"		,"president"		,"000");
-        CompteUtilisateur cu3  = new CompteUtilisateur( "Quiroule"	, "Pierre"	,22,"rue de la grotte"				,56000,"pierre@tombe.com"		,"pepe"			,"456");
-        CompteUtilisateur cu4  = new CompteUtilisateur( "Lateur"	, "Venti"	,64,"rue du vent"				,14700,"vent@souffle.com"		,"fort"			,"999");
-        CompteUtilisateur cu5  = new CompteUtilisateur( "Mie"		, "Calline"	,12,"rue de la boulangerie"			,64000,"boulan@gerie.com"		,"boubou"		,"200");
+        CompteUtilisateur cu1  = new CompteUtilisateur( "Pesquet" , "Thomas"	,50,"rue spatial"				,17000,"thomas@nasa.com"		,"toto"		,"123");
+        CompteUtilisateur cu2  = new CompteUtilisateur( "Hollande", "François",55,"rue de la république"		,54211,"holland@elysé.com"	,"president"	,"000");
+        CompteUtilisateur cu3  = new CompteUtilisateur( "Quiroule", "Pierre"	,22,"rue de la grotte"			,56000,"pierre@tombe.com"		,"pepe"		,"456");
+        CompteUtilisateur cu4  = new CompteUtilisateur( "Lateur"	, "Venti"	,64,"rue du vent"				,14700,"vent@souffle.com"		,"fort"		,"999");
+        CompteUtilisateur cu5  = new CompteUtilisateur( "Mie"	    , "Calline"	,12,"rue de la boulangerie"	,64000,"boulan@gerie.com"		,"boubou"		,"200");
 
-        CompteUtilisateur cu6  = new CompteUtilisateur( "Mortred"	,"Anthony"	,19,"13 rue de la moelle"			,16954,"anthony@mortred.com"		,"Anth0nyM0"		,"oui");
-        CompteUtilisateur cu7  = new CompteUtilisateur( "Deutté"	, "Victor"	,25,"rue du leuleu"				,28500,"victor@deuxtt.com"		,"vivi"			,"125");
-        CompteUtilisateur cu8  = new CompteUtilisateur( "Lepen"	, "Marine"	,62,"rue sombre"				,93000,"marine@migre.com"		,"help"			,"008");
-        CompteUtilisateur cu9  = new CompteUtilisateur( "Dwayne"	, "TheRock"	,47,"rue du block"				,45600,"Rock@fort.com"			,"The"			,"692");
-        CompteUtilisateur cu10 = new CompteUtilisateur( "Mickey"	, "Dance"	,26,"Avenue de Disney"				,92600,"Chateau@souris.com"		,"dingo"		,"172");
+        CompteUtilisateur cu6  = new CompteUtilisateur( "Mortred"	,"Anthony"	,19,"13 rue de la moelle"		,16954,"anthony@mortred.com"	,"Anth0nyM0"	,"oui");
+        CompteUtilisateur cu7  = new CompteUtilisateur( "Deutté"	, "Victor"	,25,"rue du leuleu"			,28500,"victor@deuxtt.com"	,"vivi"		,"125");
+        CompteUtilisateur cu8  = new CompteUtilisateur( "Lepen"	, "Marine"	,62,"rue sombre"				,93000,"marine@migre.com"		,"help"		,"008");
+        CompteUtilisateur cu9  = new CompteUtilisateur( "Dwayne"  , "TheRock"	,47,"rue du block"			    ,45600,"Rock@fort.com"		,"The"		,"692");
+        CompteUtilisateur cu10 = new CompteUtilisateur( "Mickey"	, "Dance"	,26,"Avenue de Disney"			,92600,"Chateau@souris.com"	,"dingo"		,"172");
 
-        CompteUtilisateur cu11 = new CompteUtilisateur("Donald"	,"Trump"	,75,"allée maison blanche"			,46900,"maison@blanche.com"		,"dodo"			,"019");
-        CompteUtilisateur cu12 = new CompteUtilisateur("Papier"	,"Bulle"	,32,"rue du pet"				,64200,"bulle@dair.com"			,"bubu"			,"432");
-        CompteUtilisateur cu13 = new CompteUtilisateur("Corail"	,"Abdoul"	,25,"3me rue du primordial"			,45998,"Abdoul@Corail.com"		,"@bd0ulC0"		,"oui");
-        CompteUtilisateur cu14 = new CompteUtilisateur("Mayonai"	,"Camille"	,23,"456 Boulevard des enfers"			,94921,"Camille@Mayonaise.com"		,"KmyMay0"		,"oui");
-        CompteUtilisateur cu15 = new CompteUtilisateur("Ivoire"	,"Lucas"	,24,"974 rue du bitcoin"			,32164,"Lucas@Ivoire.com"		,"LuKIvoir"		,"oui");
+        CompteUtilisateur cu11 = new CompteUtilisateur("Donald"	,"Trump"	,75,"allée maison blanche"		,46900,"maison@blanche.com"	,"dodo"		,"019");
+        CompteUtilisateur cu12 = new CompteUtilisateur("Papier"	,"Bulle"	,32,"rue du pet"				,64200,"bulle@dair.com"		,"bubu"		,"432");
+        CompteUtilisateur cu13 = new CompteUtilisateur("Corail"	,"Abdoul"	,25,"3me rue du primordial"	,45998,"Abdoul@Corail.com"	,"@bd0ulC0"	,"oui");
+        CompteUtilisateur cu14 = new CompteUtilisateur("Mayonai"	,"Camille"	,23,"456 Boulevard des enfers"	,94921,"Camille@Mayonaise.com","KmyMay0"	,"oui");
+        CompteUtilisateur cu15 = new CompteUtilisateur("Ivoire"	,"Lucas"	,24,"974 rue du bitcoin"		,32164,"Lucas@Ivoire.com"		,"LuKIvoir"	,"oui");
 
-        CompteUtilisateur cu16 = new CompteUtilisateur("Lyra"	,"Mathis"	,19,"Avenue du Carolina Reaper"			,79485,"Mathis@Lyra.com"		,"M4t1sLyr4"		,"oui");
-        CompteUtilisateur cu17 = new CompteUtilisateur("Xmas"	,"Enyhra"	,22,"17 du Chadelinity"				,82648,"Enyhra@Xmas.com"		,"3nyhr4Xm@s"		,"oui");
-        CompteUtilisateur cu18 = new CompteUtilisateur("Relax"	,"Jabaoud"	,21,"94 allée d'Anvers"				,93000,"Jabaoud@Relax.com"		,"J@b@o0dR3lx"		,"oui");
-        CompteUtilisateur cu19 = new CompteUtilisateur("Xmas"	,"Enyhra"	,22,"17 du Chadelinity"				,82648,"Enyhra@Xmas.com"		,"3nyhr4Xm@s"		,"oui");
-        CompteUtilisateur cu20 = new CompteUtilisateur("Relax"	,"Jabaoud"	,21,"94 allée d'Anvers"				,93000,"Jabaoud@Relax.com"		,"J@b@o0dR3lx"		,"oui");
+        CompteUtilisateur cu16 = new CompteUtilisateur("Lyra"	    ,"Mathis"	,19,"Avenue du Carolina Reaper",79485,"Mathis@Lyra.com"		,"M4t1sLyr4"	,"oui");
+        CompteUtilisateur cu17 = new CompteUtilisateur("Xmas"	    ,"Enyhra"	,22,"17 du Chadelinity"		,82648,"Enyhra@Xmas.com"		,"3nyhr4Xm@s"	,"oui");
+        CompteUtilisateur cu18 = new CompteUtilisateur("Relax"    ,"Jabaoud"	,21,"94 allée d'Anvers"		,93000,"Jabaoud@Relax.com"	,"J@b@o0dR3lx","oui");
+        CompteUtilisateur cu19 = new CompteUtilisateur("Xmas"     ,"Enyhra"	,22,"17 du Chadelinity"		,82648,"Enyhra@Xmas.com"		,"3nyhr4Xm@s"	,"oui");
+        CompteUtilisateur cu20 = new CompteUtilisateur("Relax"    ,"Jabaoud"	,21,"94 allée d'Anvers"		,93000,"Jabaoud@Relax.com"	,"J@b@o0dR3lx","oui");
 
 
         //Création des soirées
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_creersoiree) {
             Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
-            return true;
+        return true;
+
         }
         else    if (id == R.id.action_recherchesoiree) {
             Toast.makeText(this, "Cliqué sur l'action \"Recherche soirée\"", Toast.LENGTH_SHORT).show();
