@@ -1,5 +1,7 @@
 package com.example.myrecc;
 
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.myrecc.metier.CompteUtilisateur;
@@ -20,6 +22,8 @@ import com.example.myrecc.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -79,14 +83,6 @@ public class MainActivity extends AppCompatActivity {
         Soiree so12 = new Soiree(cu6, "13 rue de la moelle","Rochefort", 16954,"17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",true,true);
 
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-            }
-        });
     }
 
     @Override
@@ -105,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_creersoiree) {
-            Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
             return true;
         }
         else    if (id == R.id.action_recherchesoiree) {
@@ -121,5 +118,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void creerSoiree(){
+
     }
 }
