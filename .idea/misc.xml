@@ -3,18 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/activity_choix.xml" value="0.33" />
+=======
+        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/activity_choix.xml" value="0.36666666666666664" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/fragment_second.xml" value="0.2957427536231884" />
+<<<<<<< Updated upstream
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/layout/soiree.xml" value="0.33" />
+=======
+>>>>>>> Stashed changes
         <entry key="..\:/Users/Cyril Bretaud/AndroidStudioProjects/ApplicationRec/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/activity_main.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/content_main.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/fragment_first.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/layout/fragment_second.xml" value="0.33" />
         <entry key="..\:/Users/elian/AndroidStudioProjects/MyRecc/app/src/main/res/menu/menu_main.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/activity_choix.xml" value="0.3651041666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3651041666666667" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/soiree.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

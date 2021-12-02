@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private List<String> lesSoirees = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,23 +126,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         //Afficher la page de création de soirée quand on clique sur le bouton dans le menu déroulé
         if (id == R.id.action_creersoiree) {
-            setContentView(R.layout.fragment_second);
-            //Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.creerUneSoiree);
             return true;
         }
         else    if (id == R.id.action_recherchesoiree) {
-            Toast.makeText(this, "Cliqué sur l'action \"Recherche soirée\"", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -153,7 +149,4 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void creerSoiree(){
-
-    }
 }
