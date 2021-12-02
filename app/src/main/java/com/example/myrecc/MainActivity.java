@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentManager;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -111,8 +113,21 @@ public class MainActivity extends AppCompatActivity {
         lesSoirees.add(so12);
 
 
-
-        adapter = new SoireeAdapter(lesSoirees);
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            List<Soiree> soireesRecherchees = new ArrayList<>();
+            for (Soiree soiree : lesSoirees){
+                Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
+                if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
+                    Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
+                    soireesRecherchees.add(soiree);
+                }
+            }
+            adapter = new SoireeAdapter(soireesRecherchees);
+        }
+        else {
+            adapter = new SoireeAdapter(lesSoirees);
+       }
         recyclerView.setAdapter(adapter);
 
     }
