@@ -1,6 +1,10 @@
 package com.example.myrecc.support;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -10,6 +14,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myrecc.DetailSoiree;
 import com.example.myrecc.MainActivity;
 import com.example.myrecc.R;
 import com.example.myrecc.metier.Soiree;
@@ -33,7 +38,7 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
         tvHeure = (TextView) itemView.findViewById(R.id.tvHeure);
 
-        item.setOnClickListener(this);
+        tvDescription.setOnClickListener(this);
     }
 
 
@@ -47,9 +52,19 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
 
     @Override
     public void onClick(View v) {
-        /*Soiree laSoiree =;
-        v.getContext().startActivity();*/
-        //Activity activity = getActivity();
-    }
+
+        Context context = v.getContext();
+        Intent data = new Intent(context, DetailSoiree.class);
+
+        data.putExtra("tvAdresse",tvAdresse.getText().toString());
+        data.putExtra("tvVille",tvVille.getText().toString());
+        data.putExtra("tvDescription",tvDescription.getText().toString());
+        data.putExtra("tvHeure",tvHeure.getText().toString());
+
+        Log.i("dataAdresse","data->"+data);
+
+        context.startActivity(data);
+        Log.i("context", context.toString());
+        }
 
 }

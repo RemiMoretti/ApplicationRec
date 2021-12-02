@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         Soiree so12 = new Soiree(cu6, "13 rue de la moelle","Rochefort", 16954,"17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",true,true);
 
 
+        //création de la liste des soirées
         List<Soiree> lesSoirees = new ArrayList<>();
         lesSoirees.add(so1);
         lesSoirees.add(so2);
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         lesSoirees.add(so12);
 
 
+        //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
         Bundle extra = getIntent().getExtras();
         if(extra != null){
             List<Soiree> soireesRecherchees = new ArrayList<>();
@@ -123,7 +125,12 @@ public class MainActivity extends AppCompatActivity {
                     soireesRecherchees.add(soiree);
                 }
             }
-            adapter = new SoireeAdapter(soireesRecherchees);
+            if(soireesRecherchees.isEmpty()==false) {
+                adapter = new SoireeAdapter(soireesRecherchees);
+            }
+            else{
+                adapter = new SoireeAdapter(lesSoirees);
+            }
         }
         else {
             adapter = new SoireeAdapter(lesSoirees);
