@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myrecc.databinding.FragmentRechercheSoireeBinding;
+import com.example.myrecc.databinding.FragmentDetailSoireeBinding;
 
-public class RechercheSoireeFragment extends Fragment {
-    private FragmentRechercheSoireeBinding binding;
+public class DetailSoireeFragment extends Fragment {
+    private FragmentDetailSoireeBinding binding;
 
     //Declaration des variables EditText
     private TextView tvDescSoiree;
@@ -26,7 +26,7 @@ public class RechercheSoireeFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentRechercheSoireeBinding.inflate(inflater, container, false);
+        binding = FragmentDetailSoireeBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -44,7 +44,7 @@ public class RechercheSoireeFragment extends Fragment {
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(RechercheSoireeFragment.this)
+                NavHostFragment.findNavController(DetailSoireeFragment.this)
                         .navigate(R.id.rechercheUneSoiree);
             }
         });

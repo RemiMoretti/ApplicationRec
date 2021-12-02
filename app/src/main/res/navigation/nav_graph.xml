@@ -31,4 +31,15 @@
     <action
         android:id="@+id/creerUneSoiree"
         app:destination="@id/SecondFragment" />
+
+    <fragment
+        android:id="@+id/detailSoiree"
+        android:name="com.example.myrecc.DetailSoireeFragment"
+        android:label="@string/detail_fragment_label"
+        tools:layout="@layout/fragment_detail_soiree">
+
+        <action
+            android:id="@+id/action_DetailSoireeFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>
