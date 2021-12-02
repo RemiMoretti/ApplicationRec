@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.myrecc.metier.CompteUtilisateur;
 import com.example.myrecc.metier.Soiree;
+import com.example.myrecc.support.SoireeAdapter;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecc.databinding.ActivityMainBinding;
 
@@ -24,11 +27,18 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private List<String> lesSoirees = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        layoutManager =  new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
 
         //Création des faux utilisateurs
@@ -82,6 +95,25 @@ public class MainActivity extends AppCompatActivity {
         Soiree so11 = new Soiree(cu5, "113 rue Robespierre","Toulouse", 94989,"25 Novembre", "17:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",true,true);
         Soiree so12 = new Soiree(cu6, "13 rue de la moelle","Rochefort", 16954,"17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",true,true);
 
+
+        List<Soiree> lesSoirees = new ArrayList<>();
+        lesSoirees.add(so1);
+        lesSoirees.add(so2);
+        lesSoirees.add(so3);
+        lesSoirees.add(so4);
+        lesSoirees.add(so5);
+        lesSoirees.add(so6);
+        lesSoirees.add(so7);
+        lesSoirees.add(so8);
+        lesSoirees.add(so9);
+        lesSoirees.add(so10);
+        lesSoirees.add(so11);
+        lesSoirees.add(so12);
+
+
+
+        adapter = new SoireeAdapter(lesSoirees);
+        recyclerView.setAdapter(adapter);
 
     }
 
