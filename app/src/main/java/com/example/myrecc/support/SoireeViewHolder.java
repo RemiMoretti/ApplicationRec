@@ -1,12 +1,16 @@
 package com.example.myrecc.support;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myrecc.MainActivity;
 import com.example.myrecc.R;
 import com.example.myrecc.metier.Soiree;
 
@@ -17,6 +21,9 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     TextView tvDescription;
     TextView tvHeure;
     LinearLayout item;
+
+
+
     public SoireeViewHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -42,6 +49,7 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     public void onClick(View v) {
         /*Soiree laSoiree =;
         v.getContext().startActivity();*/
+        //Activity activity = getActivity();
     }
 
 }

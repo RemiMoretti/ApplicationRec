@@ -39,7 +39,7 @@ public class DetailSoireeFragment extends Fragment {
         binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
         binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");
 
-        
+
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
