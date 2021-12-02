@@ -15,14 +15,14 @@ public class Soiree {
     private String date;
     private String heure;
     private String description;
-    private boolean alcool;
-    private boolean soireeOuverte;
+    private int alcool;
+    private int soireeOuverte;
     private ArrayList<CompteUtilisateur> participants = new ArrayList<CompteUtilisateur>();
 
     //-----------------------------------------------------------------------
     //-------------------------------Constructeur----------------------------
     //-----------------------------------------------------------------------
-    public Soiree(CompteUtilisateur orga, String adresse, String ville,int CP, String date, String heure, String description, boolean alcool, boolean soireeOuverte) {
+    public Soiree(CompteUtilisateur orga, String adresse, String ville,int CP, String date, String heure, String description, int alcool, int soireeOuverte) {
         this.orga = orga;
         this.adresse = adresse;
         this.CP = CP;
@@ -64,11 +64,11 @@ public class Soiree {
         return description;
     }
 
-    public boolean isAlcool() {
+    public int isAlcool() {
         return alcool;
     }
 
-    public boolean isSoireeOuverte() {
+    public int isSoireeOuverte() {
         return soireeOuverte;
     }
 
@@ -84,4 +84,22 @@ public class Soiree {
         participants.add(utilisateur);
     }
 
+    //-----------------------------------------------------------------------
+    //----------------------------toString()-------------------------------
+    //-----------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return "Soiree{" +
+                "orga=" + orga + "\n"+
+                ", adresse='" + adresse + '\'' +
+                ", CP=" + CP +
+                ", ville='" + ville + '\'' +
+                ", date='" + date + '\'' +
+                ", heure='" + heure + '\'' +
+                ", description='" + description + '\'' +
+                ", alcool=" + alcool +
+                ", soireeOuverte=" + soireeOuverte +
+                '}';
+    }
 }

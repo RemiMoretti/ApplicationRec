@@ -9,29 +9,18 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <TextView
-        android:id="@+id/tvNomSoiree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom de la soirée"
-        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
 
-    <TextView
-        android:id="@+id/tvTypeSoiree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="Type de soirée"
-        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
-        app:layout_constraintEnd_toEndOf="@+id/tvNomSoiree"
-        app:layout_constraintStart_toStartOf="@+id/tvNomSoiree"
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etDate"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.803" />
 
     <Button
         android:id="@+id/btCreaSoiree"
@@ -44,23 +33,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.912" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiNomSoiree"
-        android:layout_width="117dp"
-        android:layout_height="29dp"
-        android:visibility="visible"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.795"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
-
     <EditText
         android:id="@+id/etDate"
         android:layout_width="117dp"
-        android:layout_height="30dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,114 +44,205 @@
         app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.067"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="117dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etHeure"
-        app:layout_constraintStart_toStartOf="@+id/etHeure"
+    <TextView
+        android:id="@+id/tvdateSoiree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_de_la_soiree"
+        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54">
+        app:layout_constraintVertical_bias="0.127" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/typeSoiree"
+    <EditText
+        android:id="@+id/etHeure"
         android:layout_width="117dp"
-        android:layout_height="29dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etDate"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etDate"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
-
-    <TextView
-        android:id="@+id/tvAlcool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alcool ?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvHeure"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvHeure"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
-
-    <TextView
-        android:id="@+id/tvSoireeOuvert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Soirée ouverte?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvAlcool"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="@+id/tvAlcool"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.201" />
 
     <TextView
         android:id="@+id/tvHeure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Heure"
+        android:text="@string/heure"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/tvdateSoiree"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvdateSoiree"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date de la soirée"
-        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
-        app:layout_constraintEnd_toEndOf="@+id/tvTypeSoiree"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/tvTypeSoiree"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <EditText
-        android:id="@+id/etHeure"
+        android:id="@+id/etCP"
         android:layout_width="117dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etDate"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etDate"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.499" />
+
+    <EditText
+        android:id="@+id/etAdresse"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etDate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306" />
+
+    <EditText
+        android:id="@+id/etVille"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etDate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
 
     <RadioGroup
-        android:layout_width="180dp"
-        android:layout_height="74dp"
+        android:id="@+id/rgAlcool"
+        android:layout_width="144dp"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintHorizontal_bias="0.889"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469">
+        app:layout_constraintVertical_bias="0.59000003">
 
         <RadioButton
-            android:id="@+id/rbNon"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Non" />
+            android:id="@+id/rbAlcoolOui"
+            android:layout_width="72dp"
+            android:layout_height="48dp"
+            android:text="@string/oui" />
 
         <RadioButton
-            android:id="@+id/rbOui"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Oui" />
+            android:id="@+id/rbAlcoolNon"
+            android:layout_width="72dp"
+            android:layout_height="48dp"
+            android:text="@string/non" />
 
     </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgOuvert"
+        android:layout_width="145dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rgAlcool"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toStartOf="@+id/rgAlcool"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68">
+
+        <RadioButton
+            android:id="@+id/rbOuvertOui"
+            android:layout_width="72dp"
+            android:layout_height="48dp"
+            android:text="@string/oui" />
+
+        <RadioButton
+            android:id="@+id/rbOuvertNon"
+            android:layout_width="72dp"
+            android:layout_height="48dp"
+            android:text="@string/non" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvAlcool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alcool"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvCP"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvCP"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585" />
+
+    <TextView
+        android:id="@+id/tvSoireeOuvert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/soiree_ouverte"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvAlcool"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvAlcool"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669" />
+
+    <TextView
+        android:id="@+id/tvAdresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adresse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvHeure"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvHeure"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.311" />
+
+    <TextView
+        android:id="@+id/tvVille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ville"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvAdresse"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvAdresse"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
+    <TextView
+        android:id="@+id/tvCP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/code_postal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvVille"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvVille"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="117dp"
+        android:layout_height="59dp"
+        android:text="@string/courte_description_de_la_soir_e"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSoireeOuvert"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvSoireeOuvert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.816" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,4 +63,23 @@ public class CompteUtilisateur {
     public String getMdp() {
         return mdp;
     }
+
+    //-----------------------------------------------------------------------
+    //----------------------------toString()-------------------------------
+    //-----------------------------------------------------------------------
+
+
+    @Override
+    public String toString() {
+        return "CompteUtilisateur{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", age=" + age +
+                ", adresse='" + adresse + '\'' +
+                ", CP=" + CP +
+                ", mail='" + mail + '\'' +
+                ", login='" + login + '\'' +
+                ", mdp='" + mdp + '\'' +
+                '}';
+    }
 }
