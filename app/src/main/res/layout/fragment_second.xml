@@ -48,6 +48,8 @@
         android:id="@+id/tiNomSoiree"
         android:layout_width="117dp"
         android:layout_height="29dp"
+        android:visibility="visible"
+        app:hintEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.795"

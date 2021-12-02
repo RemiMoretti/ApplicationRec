@@ -16,10 +16,11 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     TextView tvVille;
     TextView tvDescription;
     TextView tvHeure;
+    LinearLayout item;
     public SoireeViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        LinearLayout item = itemView.findViewById(R.id.item);
+        item = itemView.findViewById(R.id.item);
         tvAdresse = (TextView) itemView.findViewById(R.id.tvAdresse);
         tvVille = (TextView) itemView.findViewById(R.id.tvVille);
         tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
@@ -39,7 +40,8 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
 
     @Override
     public void onClick(View v) {
-
+        /*Soiree laSoiree =;
+        v.getContext().startActivity();*/
     }
 
 }
