@@ -100,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        //Afficher la page de création de soirée quand on clique sur le bouton dans le menu déroulé
         if (id == R.id.action_creersoiree) {
-
+            setContentView(R.layout.fragment_second);
             //Toast.makeText(this, "Cliqué sur l'action \"Creer soirée\"", Toast.LENGTH_SHORT).show();
             return true;
         }
