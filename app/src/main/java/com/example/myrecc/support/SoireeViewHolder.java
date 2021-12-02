@@ -1,6 +1,7 @@
 package com.example.myrecc.support;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +18,14 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     TextView tvHeure;
     public SoireeViewHolder(@NonNull View itemView) {
         super(itemView);
+
+        LinearLayout item = itemView.findViewById(R.id.item);
         tvAdresse = (TextView) itemView.findViewById(R.id.tvAdresse);
         tvVille = (TextView) itemView.findViewById(R.id.tvVille);
         tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
         tvHeure = (TextView) itemView.findViewById(R.id.tvHeure);
 
-        tvAdresse.setOnClickListener(this);
+        item.setOnClickListener(this);
     }
 
 
