@@ -38,7 +38,7 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
         tvHeure = (TextView) itemView.findViewById(R.id.tvHeure);
 
-        tvDescription.setOnClickListener(this);
+        item.setOnClickListener(this);
     }
 
 
