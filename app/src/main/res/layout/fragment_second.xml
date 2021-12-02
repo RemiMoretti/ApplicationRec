@@ -9,6 +9,7 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
+<<<<<<< HEAD
 
     <EditText
         android:id="@+id/etNomSoiree"
@@ -42,6 +43,8 @@
         tools:ignore="SpeakableTextPresentCheck"
         android:autofillHints="Type de la soirée" />
 
+=======
+>>>>>>> main
     <TextView
         android:id="@+id/tvTypeSoiree"
         android:layout_width="wrap_content"
@@ -50,10 +53,17 @@
         android:text="@string/type_de_soiree"
         app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvNomSoiree"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.226" />
+=======
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
+>>>>>>> main
 
     <TextView
         android:id="@+id/tvNomSoiree"
@@ -78,6 +88,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.912" />
 
+<<<<<<< HEAD
+=======
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiNomSoiree"
+        android:layout_width="117dp"
+        android:layout_height="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/btCreaSoiree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
+>>>>>>> main
     <EditText
         android:id="@+id/etDate"
         android:layout_width="116dp"
