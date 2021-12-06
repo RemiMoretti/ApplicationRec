@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">MyRec</string>
+    <string name="app_name">REC</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Recherche soirées</string>
-    <string name="second_fragment_label">Création de soirée</string>
-    <string name="detail_fragment_label">Detail soiree</string>
+    <string name="first_fragment_label">REC°</string>
+    <string name="second_fragment_label">REC°</string>
+    <string name="detail_fragment_label">REC°</string>
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>

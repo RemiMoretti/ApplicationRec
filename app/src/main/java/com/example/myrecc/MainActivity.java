@@ -1,6 +1,5 @@
 package com.example.myrecc;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -136,15 +136,30 @@ public class MainActivity extends AppCompatActivity {
                     adapter = new SoireeAdapter(soireesRecherchees);
                     Log.i("adapter", "l'adapter existe");
                 }
+                else {
+                    adapter = new SoireeAdapter(lesSoirees);
+                }
             }
 
             //Si on veut voir les détails d'une soirée
             else if(extra.get("detail")!=null){
-                navController.navigate(R.id.detailDeSoiree);
+                //setContentView(R.layout.fragment_detail_soiree);
+                Fragment detailSoiree = new DetailSoireeFragment();
+                Bundle bundle = new Bundle();
 
-                TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
+                String desc = extra.get("detail").toString();
+                bundle.putString("desc",desc);
+
+                detailSoiree.setArguments(bundle);
+                ((DetailSoireeFragment) detailSoiree).affichage();
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+                //navController.navigate(R.id.detailDeSoiree);
+
+                TextView tvDescSoiree = (TextView) findViewById(R.id.tvDescSoiree);
                 Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
-                tvDescSoiree.setText(extra.get("detail").toString());
+                //tvDescSoiree.setText(extra.get("detail").toString());
+                // tvDescSoiree.setText("detailccccccccccccccc");
             }
         }
 
