@@ -11,12 +11,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecc.DetailSoiree;
+import com.example.myrecc.FirstFragment;
 import com.example.myrecc.MainActivity;
 import com.example.myrecc.R;
+import com.example.myrecc.SecondFragment;
 import com.example.myrecc.metier.Soiree;
 
 public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -55,6 +59,7 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
 
         Context context = v.getContext();
         Intent data = new Intent(context, MainActivity.class);
+
         String donnees = tvDescription.getText().toString();
 
         data.putExtra("detail",donnees);
@@ -62,7 +67,6 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         Log.i("dataAdresse","data->"+data);
 
         context.startActivity(data);
-        Log.i("context", context.toString());
-        }
+    }
 
 }

@@ -134,28 +134,25 @@ public class MainActivity extends AppCompatActivity {
                 //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
                 if(!soireesRecherchees.isEmpty()) {
                     adapter = new SoireeAdapter(soireesRecherchees);
-                }
-                else{
-                    adapter = new SoireeAdapter(lesSoirees);
+                    Log.i("adapter", "l'adapter existe");
                 }
             }
 
             //Si on veut voir les détails d'une soirée
             else if(extra.get("detail")!=null){
                 navController.navigate(R.id.detailDeSoiree);
-                setSupportActionBar(binding.toolbar);
 
                 TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
-//                tvDescSoiree.setText(extra.getString("detail"));
+                Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
+                tvDescSoiree.setText(extra.get("detail").toString());
             }
         }
 
         //Si on arrive sur la page de recherche
         else {
             adapter = new SoireeAdapter(lesSoirees);
-            recyclerView.setAdapter(adapter);
         }
-
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

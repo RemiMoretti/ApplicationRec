@@ -39,7 +39,6 @@ public class DetailSoireeFragment extends Fragment {
         binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
         binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
         binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");
-        binding.btRetourMenu.setText("xx");
 
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
