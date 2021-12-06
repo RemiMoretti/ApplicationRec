@@ -60,11 +60,13 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         Context context = v.getContext();
         Intent data = new Intent(context, MainActivity.class);
 
+        int position = this.getPosition()+1;
         String donnees = tvDescription.getText().toString();
 
         data.putExtra("detail",donnees);
+        data.putExtra("position", position);
 
-        Log.i("dataAdresse","data->"+data);
+        Log.i("dataAdresse","data->"+data.getExtras().get("detail")+" position = "+data.getExtras().get("position").toString());
 
         context.startActivity(data);
     }
