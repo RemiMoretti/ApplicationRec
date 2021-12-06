@@ -151,15 +151,8 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("desc",desc);
 
                 detailSoiree.setArguments(bundle);
-                ((DetailSoireeFragment) detailSoiree).affichage();
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
-                //navController.navigate(R.id.detailDeSoiree);
-
-                TextView tvDescSoiree = (TextView) findViewById(R.id.tvDescSoiree);
-                Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
-                //tvDescSoiree.setText(extra.get("detail").toString());
-                // tvDescSoiree.setText("detailccccccccccccccc");
             }
         }
 
