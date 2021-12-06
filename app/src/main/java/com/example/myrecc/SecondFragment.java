@@ -54,6 +54,7 @@ public class SecondFragment extends Fragment {
                 RadioGroup radioOuvert = binding.rgOuvert;
                     int ouvert = radioAlcool.getCheckedRadioButtonId();
                     int Alcool = radioOuvert.getCheckedRadioButtonId();
+
                if(radioAlcool.getCheckedRadioButtonId() == binding.rbAlcoolOui.getId()) {
                     Alcool=1;
                     Log.i("CreaSoi","Alcool 1 : "+Alcool);
@@ -77,8 +78,7 @@ public class SecondFragment extends Fragment {
                 Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,Alcool,ouvert);
                 Log.i("CreaSoiree","soirée : "+soirée);
 
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
             }
         });
     }

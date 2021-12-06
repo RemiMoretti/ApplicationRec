@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_detail_Soiree"
+            app:destination="@id/detailSoiree" />
     </fragment>
     <action
         android:id="@+id/rechercheUneSoiree"
@@ -35,4 +38,14 @@
     <action
         android:id="@+id/detailDeSoiree"
         app:destination="@id/detailSoiree" />
+
+    <fragment
+        android:id="@+id/detailSoiree"
+        android:name="com.example.myrecc.DetailSoireeFragment"
+        android:label="@string/detail_fragment_label"
+        tools:layout="@layout/fragment_detail_soiree">
+        <action
+            android:id="@+id/action_Detail_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

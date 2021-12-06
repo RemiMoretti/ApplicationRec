@@ -45,7 +45,7 @@ public class DetailSoireeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(DetailSoireeFragment.this)
-                        .navigate(R.id.rechercheUneSoiree);
+                        .navigate(R.id.action_Detail_to_FirstFragment);
             }
         });
     }
