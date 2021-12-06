@@ -6,11 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrecc.databinding.FragmentDetailSoireeBinding;
 
@@ -21,6 +21,7 @@ public class DetailSoireeFragment extends Fragment {
     private TextView tvDescSoiree;
     private TextView tvDescCreateur;
     private TextView tvParticipants;
+    private ImageView imView;
 
     @Override
     public View onCreateView(
@@ -72,7 +73,6 @@ public class DetailSoireeFragment extends Fragment {
         /*binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
         binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
         binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");*/
-
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
