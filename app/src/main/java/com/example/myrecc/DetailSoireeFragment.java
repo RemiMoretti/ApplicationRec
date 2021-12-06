@@ -1,5 +1,6 @@
 package com.example.myrecc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,14 +39,15 @@ public class DetailSoireeFragment extends Fragment {
         binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
         binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
         binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");
-
+        binding.btRetourMenu.setText("xx");
 
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(DetailSoireeFragment.this)
-                        .navigate(R.id.action_Detail_to_FirstFragment);
+                //NavHostFragment.findNavController(DetailSoireeFragment.this).navigate(R.id.action_Detail_to_FirstFragment);
+                Intent retour = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(retour);
             }
         });
     }

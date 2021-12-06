@@ -18,7 +18,6 @@ public class DetailSoiree extends AppCompatActivity {
 
         TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
 
-        //Button retour = findViewById(R.id.btRetourMenu);
         Bundle extra = getIntent().getExtras();
 
         tvDescSoiree.setText(extra.getString("tvDescription"));

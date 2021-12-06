@@ -26,6 +26,7 @@ import com.example.myrecc.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -116,26 +117,44 @@ public class MainActivity extends AppCompatActivity {
 
         //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
         Bundle extra = getIntent().getExtras();
+
+        //Si on vient d'un autre fragment
         if(extra != null){
-            List<Soiree> soireesRecherchees = new ArrayList<>();
-            for (Soiree soiree : lesSoirees){
-                Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
-                if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
-                    Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
-                    soireesRecherchees.add(soiree);
+
+            //Si on effectue une recherche de ville
+            if (extra.get("ville") != null) {
+                List<Soiree> soireesRecherchees = new ArrayList<>();
+                for (Soiree soiree : lesSoirees){
+                    Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
+                    if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
+                        Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
+                        soireesRecherchees.add(soiree);
+                    }
+                }
+                //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
+                if(!soireesRecherchees.isEmpty()) {
+                    adapter = new SoireeAdapter(soireesRecherchees);
+                }
+                else{
+                    adapter = new SoireeAdapter(lesSoirees);
                 }
             }
-            if(soireesRecherchees.isEmpty()==false) {
-                adapter = new SoireeAdapter(soireesRecherchees);
-            }
-            else{
-                adapter = new SoireeAdapter(lesSoirees);
+
+            //Si on veut voir les détails d'une soirée
+            else if(extra.get("detail")!=null){
+                navController.navigate(R.id.detailDeSoiree);
+                setSupportActionBar(binding.toolbar);
+
+                TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
+//                tvDescSoiree.setText(extra.getString("detail"));
             }
         }
+
+        //Si on arrive sur la page de recherche
         else {
             adapter = new SoireeAdapter(lesSoirees);
-       }
-        recyclerView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);
+        }
 
     }
 

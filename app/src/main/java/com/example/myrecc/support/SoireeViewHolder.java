@@ -54,12 +54,10 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     public void onClick(View v) {
 
         Context context = v.getContext();
-        Intent data = new Intent(context, DetailSoiree.class);
+        Intent data = new Intent(context, MainActivity.class);
+        String donnees = tvDescription.getText().toString();
 
-        data.putExtra("tvAdresse",tvAdresse.getText().toString());
-        data.putExtra("tvVille",tvVille.getText().toString());
-        data.putExtra("tvDescription",tvDescription.getText().toString());
-        data.putExtra("tvHeure",tvHeure.getText().toString());
+        data.putExtra("detail",donnees);
 
         Log.i("dataAdresse","data->"+data);
 
