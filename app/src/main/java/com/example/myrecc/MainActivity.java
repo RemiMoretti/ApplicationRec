@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private List<String> lesSoirees = new ArrayList<>();
+    private List<Soiree> lesSoirees = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,69 @@ public class MainActivity extends AppCompatActivity {
         layoutManager =  new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        //Initialisation des données en brut
+        if(lesSoirees.isEmpty()){
+            this.Initialisation();
+        }
 
+
+        //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
+        Bundle extra = getIntent().getExtras();
+
+        //Si on vient d'un autre fragment
+        if(extra != null){
+
+            //Si on effectue une recherche de ville
+            if (extra.get("ville") != null) {
+                List<Soiree> soireesRecherchees = new ArrayList<>();
+                for (Soiree soiree : lesSoirees){
+                    Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
+                    if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
+                        Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
+                        soireesRecherchees.add(soiree);
+                    }
+                }
+                //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
+                if(!soireesRecherchees.isEmpty()) {
+                    adapter = new SoireeAdapter(soireesRecherchees);
+                    Log.i("adapter", "l'adapter existe");
+                }
+                else {
+                    adapter = new SoireeAdapter(lesSoirees);
+                }
+            }
+
+            //Si on veut voir les détails d'une soirée
+            else if(extra.get("detail")!=null){
+                //setContentView(R.layout.fragment_detail_soiree);
+                Fragment detailSoiree = new DetailSoireeFragment();
+                Bundle bundle = new Bundle();
+                Log.i("position", "position n°"+extra.get("position"));
+
+                String desc = extra.get("detail").toString();
+                bundle.putString("desc",desc);
+
+                detailSoiree.setArguments(bundle);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+            }
+        }
+
+        //Si on arrive sur la page de recherche
+        else {
+            adapter = new SoireeAdapter(lesSoirees);
+        }
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public void Initialisation(){
         //Création des faux utilisateurs
         CompteUtilisateur cu1  = new CompteUtilisateur("Pesquet","Thomas",50,"rue spatial",17000,"thomas@nasa.com","toto"	,"123");
         CompteUtilisateur cu2  = new CompteUtilisateur("Hollande","François",55,"rue de la république",54211,"holland@elysé.com","president","000");
@@ -100,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         //création de la liste des soirées
-        List<Soiree> lesSoirees = new ArrayList<>();
         lesSoirees.add(so1);
         lesSoirees.add(so2);
         lesSoirees.add(so3);
@@ -113,61 +174,6 @@ public class MainActivity extends AppCompatActivity {
         lesSoirees.add(so10);
         lesSoirees.add(so11);
         lesSoirees.add(so12);
-
-
-        //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
-        Bundle extra = getIntent().getExtras();
-
-        //Si on vient d'un autre fragment
-        if(extra != null){
-
-            //Si on effectue une recherche de ville
-            if (extra.get("ville") != null) {
-                List<Soiree> soireesRecherchees = new ArrayList<>();
-                for (Soiree soiree : lesSoirees){
-                    Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
-                    if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
-                        Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
-                        soireesRecherchees.add(soiree);
-                    }
-                }
-                //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
-                if(!soireesRecherchees.isEmpty()) {
-                    adapter = new SoireeAdapter(soireesRecherchees);
-                    Log.i("adapter", "l'adapter existe");
-                }
-                else {
-                    adapter = new SoireeAdapter(lesSoirees);
-                }
-            }
-
-            //Si on veut voir les détails d'une soirée
-            else if(extra.get("detail")!=null){
-                //setContentView(R.layout.fragment_detail_soiree);
-                Fragment detailSoiree = new DetailSoireeFragment();
-                Bundle bundle = new Bundle();
-
-                String desc = extra.get("detail").toString();
-                bundle.putString("desc",desc);
-
-                detailSoiree.setArguments(bundle);
-
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
-            }
-        }
-
-        //Si on arrive sur la page de recherche
-        else {
-            adapter = new SoireeAdapter(lesSoirees);
-        }
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override
@@ -177,13 +183,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Afficher la page de création de soirée quand on clique sur le bouton dans le menu déroulé
         if (id == R.id.action_creersoiree) {
-            navController.navigate(R.id.creerUneSoiree);
+            Fragment creerSoiree = new SecondFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
+            //navController.navigate(R.id.creerUneSoiree);
             return true;
         }
         else    if (id == R.id.action_recherchesoiree) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
