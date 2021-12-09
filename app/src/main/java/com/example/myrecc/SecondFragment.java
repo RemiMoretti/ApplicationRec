@@ -1,11 +1,14 @@
 package com.example.myrecc;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.myrecc.metier.CompteUtilisateur;
 import com.example.myrecc.metier.Soiree;
@@ -15,10 +18,23 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrecc.databinding.FragmentSecondBinding;
 
+import org.w3c.dom.Text;
+
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    private String description ;
+    private String heure;
+    private String date;
+    private String adresse;
+    private String ville;
 
+    private int cp;
+    private int ouvert;
+    private int alcool;
+
+    private RadioGroup radioalcool;
+    private RadioGroup radioOuvert;
 
     @Override
     public View onCreateView(
@@ -34,51 +50,91 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
-
-
-
         binding.btCreaSoiree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CompteUtilisateur orga  = new CompteUtilisateur("Pesquet","Thomas",50,"rue spatial",17000,"thomas@nasa.com","toto"	,"123");
 
+                if(description==null){
+                    description="";
+                }
+                if(heure==null){
+                    heure="";
+                }
+                if(date==null){
+                    date="";
+                }
+                if(adresse==null){
+                    adresse="";
+                }
+                if(ville==null){
+                    ville="";
+                }
+                ouvert=0;
+                alcool=0;
 
-                String description = binding.etDescription.getText().toString();
-                String heure = binding.etHeure.getText().toString();
-                String date = binding.etDate.getText().toString();
-                String adresse = binding.etAdresse.getText().toString();
-                String ville = binding.etVille.getText().toString();
-                int cp = Integer.parseInt(binding.etCP.getText().toString());
+                cp=Integer.parseInt(binding.etCP.getText().toString());
+                description = binding.etDescription.getText().toString();
+                heure = binding.etHeure.getText().toString();
+                date = binding.etDate.getText().toString();
+                adresse = binding.etAdresse.getText().toString();
+                ville = binding.etVille.getText().toString();
+                //    cp = Integer.parseInt(binding.etCP.getText().toString());
 
-                RadioGroup radioAlcool = binding.rgAlcool;
-                RadioGroup radioOuvert = binding.rgOuvert;
-                    int ouvert = radioAlcool.getCheckedRadioButtonId();
-                    int Alcool = radioOuvert.getCheckedRadioButtonId();
 
-               if(radioAlcool.getCheckedRadioButtonId() == binding.rbAlcoolOui.getId()) {
-                    Alcool=1;
-                    Log.i("CreaSoi","Alcool 1 : "+Alcool);
-                }else if(radioAlcool.getCheckedRadioButtonId() == binding.rbAlcoolNon.getId()) {
-                    Alcool=0;
-                    Log.i("CreaSoi","Alcool 0 : "+Alcool);
+                radioalcool = binding.rgAlcool;
+                radioOuvert = binding.rgOuvert;
+                ouvert = radioalcool.getCheckedRadioButtonId();
+                alcool = radioOuvert.getCheckedRadioButtonId();
+
+                if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolOui.getId()) {
+                    alcool=1;
+                    Log.i("CreaSoi","alcool 1 : "+alcool);
+                }else if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolNon.getId()) {
+                    alcool=0;
+                    Log.i("CreaSoi","alcool 0 : "+alcool);
                 }
                 if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertOui.getId()) {
                     ouvert=1;
-                    Log.i("CreaSoi","Ouvert 1 : "+Alcool);
+                    Log.i("CreaSoi","Ouvert 1 : "+alcool);
                 }else if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertNon.getId()) {
                     ouvert=0;
                     Log.i("CreaSoi","Ouvert 0 :"+ouvert);
                 }
-               Log.i("CreaSoireeOuv","ouvert : "+ouvert);
-                Log.i("CreaSoireeAlc","alcool : "+Alcool);;
 
-
-
-
-                Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,Alcool,ouvert);
+                Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,alcool,ouvert);
                 Log.i("CreaSoiree","soirée : "+soirée);
 
+
+
+/*
+            Bundle dataCreaSoiree = new Bundle();
+                dataCreaSoiree.putString("tvAdresse",adresse);
+                dataCreaSoiree.putString("tvVille",ville);
+                dataCreaSoiree.putString("tvDescription",description);
+                dataCreaSoiree.putString("prenomOrga",orga.getNom());
+                dataCreaSoiree.putString("nomOrga",orga.getPrenom());
+ */
+
+
+
+
+
+                //Context context = view.getContext();
+                //Intent data = new Intent(context, DetailSoireeFragment.class);
+                DetailSoireeFragment fragment = new DetailSoireeFragment();
+                Bundle dataCreaSoiree = new Bundle();
+                dataCreaSoiree.putString("tvAdresse",adresse);
+                dataCreaSoiree.putString("tvVille",ville);
+                dataCreaSoiree.putString("tvDescription",description);
+                dataCreaSoiree.putString("prenomOrga",orga.getNom());
+                dataCreaSoiree.putString("nomOrga",orga.getPrenom());
+                fragment.setArguments(dataCreaSoiree);
+                getFragmentManager().beginTransaction().replace(R.id.detailSoiree, fragment).commit() ;
+                Log.i("Crea","data"+dataCreaSoiree);
+
                 NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
+
             }
         });
     }

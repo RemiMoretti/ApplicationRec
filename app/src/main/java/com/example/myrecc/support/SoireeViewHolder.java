@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
@@ -17,6 +18,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecc.DetailSoiree;
+import com.example.myrecc.DetailSoireeFragment;
 import com.example.myrecc.FirstFragment;
 import com.example.myrecc.MainActivity;
 import com.example.myrecc.R;
@@ -57,18 +59,25 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
     @Override
     public void onClick(View v) {
 
-        Context context = v.getContext();
-        Intent data = new Intent(context, MainActivity.class);
+        //Context context = v.getContext();
+        Bundle data = new Bundle();
 
         int position = this.getPosition()+1;
         String donnees = tvDescription.getText().toString();
 
-        data.putExtra("detail",donnees);
-        data.putExtra("position", position);
+        data.putString("detail",donnees);
+        data.putInt("position", position);
 
-        Log.i("dataAdresse","data->"+data.getExtras().get("detail")+" position = "+data.getExtras().get("position").toString());
+        Log.i("dataAdresse","data->"+data.get("detail")+" position = "+data.get("position").toString());
 
-        context.startActivity(data);
+        Fragment detailSoiree = new DetailSoireeFragment();
+
+        detailSoiree.setArguments(data);
+        //MainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+
+        //v.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+
+        //context.startActivity(data);
     }
 
 
