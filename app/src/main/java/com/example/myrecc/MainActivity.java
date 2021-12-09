@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
 
         //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
         Bundle extra = getIntent().getExtras();
+        Bundle.putInt("position", Integer.parseInt(extra.get("position").toString()));
+
 
         //Si on vient d'un autre fragment
         if(extra != null){
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
                 Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
-                tvDescSoiree.setText(extra.get("detail").toString());
+              //tvDescSoiree.setText(extra.get("detail").toString());
             }
         }
 
@@ -186,5 +188,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrecc.databinding.FragmentDetailSoireeBinding;
+import com.example.myrecc.metier.Soiree;
 
 public class DetailSoireeFragment extends Fragment {
     private FragmentDetailSoireeBinding binding;
@@ -51,11 +52,25 @@ public class DetailSoireeFragment extends Fragment {
         });
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.btSupprimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                remove lesSoirees(extras().get("position"));
+                getArguments().getInt("position");
+            }
+        });
+    }
+
 
 
 }

@@ -71,4 +71,5 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         context.startActivity(data);
     }
 
+
 }

@@ -20,6 +20,7 @@ public class DetailSoiree extends AppCompatActivity {
 
         Bundle extra = getIntent().getExtras();
 
+
         tvDescSoiree.setText(extra.getString("tvDescription"));
 
 
