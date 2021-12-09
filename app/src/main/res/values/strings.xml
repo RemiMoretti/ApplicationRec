@@ -33,4 +33,6 @@
     <string name="heure">Heure</string>
     <string name="date_de_la_soiree">Date de la soirée</string>
     <string name="courte_description_de_la_soir_e">Courte description de la soirée</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

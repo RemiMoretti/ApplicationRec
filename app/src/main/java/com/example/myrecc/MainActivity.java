@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+            binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         if(lesSoirees.isEmpty()){
             this.Initialisation();
         }
+
 
 
         //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
@@ -105,7 +106,19 @@ public class MainActivity extends AppCompatActivity {
                 detailSoiree.setArguments(bundle);
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+<<<<<<< Updated upstream
+=======
+                //navController.navigate(R.id.detailDeSoiree);
+
+
+                TextView tvDescSoiree = (TextView) findViewById(R.id.tvDescSoiree);
+                Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
+                //tvDescSoiree.setText(extra.get("detail").toString());
+                // tvDescSoiree.setText("detailccccccccccccccc");
+
+>>>>>>> Stashed changes
             }
+
         }
 
         //Si on arrive sur la page de recherche

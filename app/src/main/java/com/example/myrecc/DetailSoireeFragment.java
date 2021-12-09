@@ -56,6 +56,11 @@ public class DetailSoireeFragment extends Fragment {
             }
         });
 
+        Bundle bundle = this.getArguments();
+        String desc = bundle.getString("tvDescription");
+        binding.tvDescSoiree.setText(desc);
+        Log.i("Crea","Le bundle : "+bundle);
+
         return binding.getRoot();
         //return viewRoot;
     }
@@ -68,6 +73,7 @@ public class DetailSoireeFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         //C'est ici qu'on va modifier les TextView
         /*binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");

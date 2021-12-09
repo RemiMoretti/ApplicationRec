@@ -107,17 +107,31 @@ public class SecondFragment extends Fragment {
 
 
 
-                Context context = view.getContext();
+/*
+            Bundle dataCreaSoiree = new Bundle();
+                dataCreaSoiree.putString("tvAdresse",adresse);
+                dataCreaSoiree.putString("tvVille",ville);
+                dataCreaSoiree.putString("tvDescription",description);
+                dataCreaSoiree.putString("prenomOrga",orga.getNom());
+                dataCreaSoiree.putString("nomOrga",orga.getPrenom());
+ */
 
-                Intent data = new Intent(context, DetailSoireeFragment.class);
 
-                data.putExtra("tvAdresse",adresse);
-                data.putExtra("tvVille",ville);
-                data.putExtra("tvDescription",description);
-                data.putExtra("prenomOrga",orga.getNom());
-                data.putExtra("nomOrga",orga.getPrenom());
 
-                Log.i("Crea","data"+data);
+
+
+                //Context context = view.getContext();
+                //Intent data = new Intent(context, DetailSoireeFragment.class);
+                DetailSoireeFragment fragment = new DetailSoireeFragment();
+                Bundle dataCreaSoiree = new Bundle();
+                dataCreaSoiree.putString("tvAdresse",adresse);
+                dataCreaSoiree.putString("tvVille",ville);
+                dataCreaSoiree.putString("tvDescription",description);
+                dataCreaSoiree.putString("prenomOrga",orga.getNom());
+                dataCreaSoiree.putString("nomOrga",orga.getPrenom());
+                fragment.setArguments(dataCreaSoiree);
+                getFragmentManager().beginTransaction().replace(R.id.detailSoiree, fragment).commit() ;
+                Log.i("Crea","data"+dataCreaSoiree);
 
                 NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
 
