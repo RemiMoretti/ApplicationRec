@@ -92,17 +92,14 @@ public class DetailSoireeFragment extends Fragment {
     }
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> main
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    public void createdOnView(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         binding.btSupprimer.setOnClickListener(new View.OnClickListener() {
