@@ -36,6 +36,7 @@ public class DetailSoireeFragment extends Fragment {
                 Log.i("args", "getArguments().getString(\"desc\") = "+getArguments().getString("desc"));
                 Log.i("args", "valeur du tvDescSoiree = "+ binding.tvDescSoiree);
                 binding.tvDescSoiree.setText(getArguments().getString("desc"));
+                binding.tvDescCreateur.setText("créateur original avec beaucoup de talents");
             }
         }
         else{
@@ -56,10 +57,10 @@ public class DetailSoireeFragment extends Fragment {
             }
         });
 
-        Bundle bundle = this.getArguments();
+        /*Bundle bundle = this.getArguments();
         String desc = bundle.getString("tvDescription");
         binding.tvDescSoiree.setText(desc);
-        Log.i("Crea","Le bundle : "+bundle);
+        Log.i("Crea","Le bundle : "+bundle);*/
 
         return binding.getRoot();
         //return viewRoot;
@@ -68,7 +69,6 @@ public class DetailSoireeFragment extends Fragment {
     public void affichage(){
         Log.i("affiche soiree", "appel affichage");
         Log.i("affiche desc", "valeur desc ");
-        //tvDescSoiree.setText("UwU");
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

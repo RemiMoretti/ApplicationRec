@@ -62,10 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialisation des données en brut
         if(lesSoirees.isEmpty()){
+            Log.i("reset", "reset des données");
             this.Initialisation();
         }
-
-
 
         //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
         Bundle extra = getIntent().getExtras();
@@ -83,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         soireesRecherchees.add(soiree);
                     }
                 }
+
                 //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
                 if(!soireesRecherchees.isEmpty()) {
                     adapter = new SoireeAdapter(soireesRecherchees);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Si on veut voir les détails d'une soirée
             else if(extra.get("detail")!=null){
-                //setContentView(R.layout.fragment_detail_soiree);
+
                 Fragment detailSoiree = new DetailSoireeFragment();
                 Bundle bundle = new Bundle();
                 Log.i("position", "position n°"+extra.get("position"));
@@ -106,17 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 detailSoiree.setArguments(bundle);
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
-<<<<<<< Updated upstream
-=======
-                //navController.navigate(R.id.detailDeSoiree);
 
-
-                TextView tvDescSoiree = (TextView) findViewById(R.id.tvDescSoiree);
-                Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
-                //tvDescSoiree.setText(extra.get("detail").toString());
-                // tvDescSoiree.setText("detailccccccccccccccc");
-
->>>>>>> Stashed changes
+            }
+            else if(extra.get("creer")!=null){
+                Fragment creerSoiree = new SecondFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
             }
 
         }
@@ -191,19 +185,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         int id = item.getItemId();
 
         //Afficher la page de création de soirée quand on clique sur le bouton dans le menu déroulé
         if (id == R.id.action_creersoiree) {
-            Fragment creerSoiree = new SecondFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
-            //navController.navigate(R.id.creerUneSoiree);
+            Intent create = new Intent(this.getApplicationContext(), MainActivity.class);
+            create.putExtra("creer", 1);
+            startActivity(create);
             return true;
         }
-        else    if (id == R.id.action_recherchesoiree) {
-
-
+        else if (id == R.id.action_recherchesoiree) {
+            Intent reset = new Intent(this.getApplicationContext(), MainActivity.class);
+            startActivity(reset);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
