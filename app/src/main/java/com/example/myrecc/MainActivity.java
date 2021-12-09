@@ -45,23 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-            binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        /*recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         layoutManager =  new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);*/
 
         //Initialisation des données en brut
-        if(lesSoirees.isEmpty()){
+        /*if(lesSoirees.isEmpty()){
             Log.i("reset", "reset des données");
             this.Initialisation();
         }
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             adapter = new SoireeAdapter(lesSoirees);
         }
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
     }
 
     @Override
@@ -185,18 +185,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         int id = item.getItemId();
 
         //Afficher la page de création de soirée quand on clique sur le bouton dans le menu déroulé
         if (id == R.id.action_creersoiree) {
-            Intent create = new Intent(this.getApplicationContext(), MainActivity.class);
+            /*Intent create = new Intent(this.getApplicationContext(), MainActivity.class);
             create.putExtra("creer", 1);
-            startActivity(create);
+            startActivity(create);*/
+            //Fragment creerSoiree = new SecondFragment();ut.fragment_first)
+            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
+            navController.navigate(R.id.creerUneSoiree);
             return true;
         }
         else if (id == R.id.action_recherchesoiree) {
-            Intent reset = new Intent(this.getApplicationContext(), MainActivity.class);
-            startActivity(reset);
+            navController.navigate(R.id.rechercheUneSoiree);
             return true;
         }
         return super.onOptionsItemSelected(item);
