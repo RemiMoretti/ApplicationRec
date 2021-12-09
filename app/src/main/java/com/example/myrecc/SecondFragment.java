@@ -14,6 +14,8 @@ import com.example.myrecc.metier.CompteUtilisateur;
 import com.example.myrecc.metier.Soiree;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrecc.databinding.FragmentSecondBinding;
@@ -87,23 +89,12 @@ public class SecondFragment extends Fragment {
                 ouvert = radioalcool.getCheckedRadioButtonId();
                 alcool = radioOuvert.getCheckedRadioButtonId();
 
-                if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolOui.getId()) {
-                    alcool=1;
-                    Log.i("CreaSoi","alcool 1 : "+alcool);
-                }else if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolNon.getId()) {
-                    alcool=0;
-                    Log.i("CreaSoi","alcool 0 : "+alcool);
-                }
-                if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertOui.getId()) {
-                    ouvert=1;
-                    Log.i("CreaSoi","Ouvert 1 : "+alcool);
-                }else if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertNon.getId()) {
-                    ouvert=0;
-                    Log.i("CreaSoi","Ouvert 0 :"+ouvert);
-                }
+                if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolOui.getId()) {alcool=1;}
+                else if(radioalcool.getCheckedRadioButtonId() == binding.rbAlcoolNon.getId()) {alcool=0;}
+                if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertOui.getId()) {ouvert=1;}
+                else if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertNon.getId()) {ouvert=0;}
 
                 Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,alcool,ouvert);
-                Log.i("CreaSoiree","soirée : "+soirée);
 
 
 
@@ -119,21 +110,25 @@ public class SecondFragment extends Fragment {
 
 
 
-
-                //Context context = view.getContext();
-                //Intent data = new Intent(context, DetailSoireeFragment.class);
                 DetailSoireeFragment fragment = new DetailSoireeFragment();
                 Bundle dataCreaSoiree = new Bundle();
+                dataCreaSoiree.putString("tvHeure",heure);
+                dataCreaSoiree.putString("tvDate",date);
+                dataCreaSoiree.putInt("tvAlcool",alcool);
+                dataCreaSoiree.putInt("tvOuvert",ouvert);
                 dataCreaSoiree.putString("tvAdresse",adresse);
                 dataCreaSoiree.putString("tvVille",ville);
                 dataCreaSoiree.putString("tvDescription",description);
                 dataCreaSoiree.putString("prenomOrga",orga.getNom());
                 dataCreaSoiree.putString("nomOrga",orga.getPrenom());
-                fragment.setArguments(dataCreaSoiree);
-                getFragmentManager().beginTransaction().replace(R.id.detailSoiree, fragment).commit() ;
-                Log.i("Crea","data"+dataCreaSoiree);
+                Log.i("Crea","data du bundle de creation : "+dataCreaSoiree);
 
-                NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragment.setArguments(dataCreaSoiree);
+                fragmentTransaction.addToBackStack(null);
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, fragment).commit();
+
+                //NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
 
             }
         });

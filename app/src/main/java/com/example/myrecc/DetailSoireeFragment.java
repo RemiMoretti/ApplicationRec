@@ -18,52 +18,84 @@ public class DetailSoireeFragment extends Fragment {
     private FragmentDetailSoireeBinding binding;
 
     //Declaration des variables EditText
-    private TextView tvDescSoiree;
-    private TextView tvDescCreateur;
-    private TextView tvParticipants;
+    private TextView tvDescSoiree, tvDescCreateur, tvParticipants;
     private ImageView imView;
+    private String SDesc;
+    private String SVille;
+    private String SAdresse;
+    private String SPrenom;
+    private String SNom;
+    private String SDate;
+    private String SHeure;
+    private String SAlcool;
+    private String SOuvert;
+
+    private int ouvert, alcool;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
         binding = FragmentDetailSoireeBinding.inflate(inflater, container, false);
-        //View viewRoot = inflater.inflate(R.layout.fragment_detail_soiree, container, true);
-        if(getArguments() != null){
-            if(getArguments().getString("desc")!=null){
-                Log.i("args", "JE SUIS PASSER DANS LA MODIF DE DESC");
-                Log.i("args", "getArguments().getString(\"desc\") = "+getArguments().getString("desc"));
-                Log.i("args", "valeur du tvDescSoiree = "+ binding.tvDescSoiree);
-                binding.tvDescSoiree.setText(getArguments().getString("desc"));
-                binding.tvDescCreateur.setText("créateur original avec beaucoup de talents");
+        Bundle bundle = this.getArguments();
+
+
+        if(bundle != null){
+            Log.i("Crea","TVdescription :  "+bundle.getString("tvDescription"));
+            Log.i("Crea","tvVille :  "+bundle.getString("tvVille"));
+            Log.i("Crea","tvAdresse :  "+bundle.getString("tvAdresse"));
+            Log.i("Crea","prenomOrga :  "+bundle.getString("prenomOrga"));
+            Log.i("Crea","nomOrga :  "+bundle.getString("nomOrga"));
+
+            SDesc = bundle.getString("tvDescription");
+            SVille = bundle.getString("tvVille");
+            SAdresse = bundle.getString("tvAdresse");
+            SPrenom = bundle.getString("prenomOrga");
+            SNom = bundle.getString("nomOrga");
+            SHeure = bundle.getString("tvHeure");
+            SDate = bundle.getString("tvDate");
+            alcool = bundle.getInt("tvAlcool");
+            ouvert = bundle.getInt("tvOuvert");
+
+            if(ouvert == 1 ){
+                SOuvert = "Oui";
+            }else if(ouvert ==0){
+                SOuvert= "non";
             }
+            if(alcool == 1 ){
+                SAlcool = "Oui";
+            }else if(alcool ==0){
+                SAlcool= "non";
+            }
+
+
+            binding.tvDescSoiree.setText("Description de la soirée : \n"+SDesc);
+            binding.tvDescCreateur.setText("Prénom de l'organisateur : "+SPrenom+"\nNom de l'organisateur : "+ SNom);
+            binding.tvParticipants.setText("Date     : " +SDate+
+                    "\nHeure  : "+SHeure+
+                    "\nVille  : " +SVille+
+                    "\nAdresse: "+SAdresse+
+                    "\nAlcool : "+SAlcool+
+                    "\nSoirée ouverte : "+SOuvert);
+            Log.i("Crea","Nom : "+ SNom+"Prenom : " +SPrenom+"/Adresse : " +SAdresse+"/Ville : "+SVille+"/Description : "+SDesc);
+
         }
         else{
-            Log.i("arguments", "getArguments() = "+getArguments());
-            binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
-            binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
-            binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");
+            Log.i("Crea","Rien dans le bundle");
         }
-
-
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //NavHostFragment.findNavController(DetailSoireeFragment.this).navigate(R.id.action_Detail_to_FirstFragment);
                 Intent retour = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(retour);
             }
         });
 
-        /*Bundle bundle = this.getArguments();
-        String desc = bundle.getString("tvDescription");
-        binding.tvDescSoiree.setText(desc);
-        Log.i("Crea","Le bundle : "+bundle);*/
-
         return binding.getRoot();
-        //return viewRoot;
+//        return viewRoot;
     }
 
     public void affichage(){
@@ -73,12 +105,6 @@ public class DetailSoireeFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-        //C'est ici qu'on va modifier les TextView
-        /*binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
-        binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
-        binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");*/
 
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
