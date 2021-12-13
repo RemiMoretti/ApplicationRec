@@ -94,28 +94,6 @@ public class Soiree {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        return "Soiree{" +
-                "orga=" + orga +
-=======
-        return "Soiree{" + orga +
->>>>>>> Stashed changes
-=======
-        return "Soiree{" + orga +
->>>>>>> main
-                ", adresse='" + adresse + '\'' +
-                ", CP=" + CP +
-                ", ville='" + ville + '\'' +
-                ", date='" + date + '\'' +
-                ", heure='" + heure + '\'' +
-                ", description='" + description + '\'' +
-                ", alcool=" + alcool +
-                ", soireeOuverte=" + soireeOuverte +
-                '}';
-    }
-=======
         return orga +
                 ",\"adresse\":" + "\""+adresse + "\""+
                 ",\"CP\":" + CP +
@@ -126,5 +104,4 @@ public class Soiree {
                 ",\"alcool\":" + alcool +
                 ",\"soireeOuverte\":" + soireeOuverte +
                 "},"   ;}
->>>>>>> main
 }
