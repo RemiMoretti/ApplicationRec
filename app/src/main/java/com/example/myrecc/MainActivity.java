@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        Bundle extra = getIntent().getExtras();
         setContentView(binding.getRoot());
+
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -120,43 +123,23 @@ public class MainActivity extends AppCompatActivity {
             adapter = new SoireeAdapter(lesSoirees);
         }
         recyclerView.setAdapter(adapter);*/
-        Bundle extra = getIntent().getExtras();
-        extra.putInt("position", Integer.parseInt(extra.get("position").toString()));
 
+        if(extra!=null){
+            if(extra.get("detail")!=null){
+                Fragment detailSoiree = new DetailSoireeFragment();
+                Bundle bundle = new Bundle();
+                Log.i("position", "position n°"+extra.get("position"));
 
-        //Si on vient d'un autre fragment
-        if(extra != null){
+                String desc = extra.get("detail").toString();
+                bundle.putString("desc",desc);
 
-            //Si on effectue une recherche de ville
-            if (extra.get("ville") != null) {
-                List<Soiree> soireesRecherchees = new ArrayList<>();
-                for (Soiree soiree : lesSoirees){
-                    Log.i("foreach hors if", "ville de la soiree ->"+soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
-                    if(soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())){
-                        Log.i("foreach dans if", "ville de la soiree ->"+soiree.getVille());
-                        soireesRecherchees.add(soiree);
-                    }
-                }
-                //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
-                if(!soireesRecherchees.isEmpty()) {
-                    adapter = new SoireeAdapter(soireesRecherchees);
-                    Log.i("adapter", "l'adapter existe");
-                }
-            }
+                detailSoiree.setArguments(bundle);
 
-            //Si on veut voir les détails d'une soirée
-            else if(extra.get("detail")!=null){
-                navController.navigate(R.id.detailDeSoiree);
+                ///navController.navigate(R.id.detailDeSoiree);
 
-                TextView tvDescSoiree = findViewById(R.id.tvDescSoiree);
-                Log.i("descSoiree", "tvDescSoiree ->"+tvDescSoiree);
-                //tvDescSoiree.setText(extra.get("detail").toString());
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
             }
         }
-        else {
-            adapter = new SoireeAdapter(lesSoirees);
-        }
-        recyclerView.setAdapter(adapter);
     }
 
 
@@ -222,10 +205,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
+    //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
 
 
-        //Si on arrive sur la page de recherche
+    //Si on arrive sur la page de recherche
 
 
 
@@ -240,12 +223,14 @@ public class MainActivity extends AppCompatActivity {
             /*Intent create = new Intent(this.getApplicationContext(), MainActivity.class);
             create.putExtra("creer", 1);
             startActivity(create);*/
-            //Fragment creerSoiree = new SecondFragment();ut.fragment_first)
+            //Fragment creerSoiree = new SecondFragment();
             //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
             navController.navigate(R.id.creerUneSoiree);
             return true;
         }
         else if (id == R.id.action_recherchesoiree) {
+            //Fragment rechercheSoiree = new FirstFragment();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, rechercheSoiree).commit();
             navController.navigate(R.id.rechercheUneSoiree);
             return true;
         }
@@ -258,7 +243,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 
 }
