@@ -22,6 +22,15 @@ import com.example.myrecc.databinding.FragmentSecondBinding;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
@@ -96,16 +105,14 @@ public class SecondFragment extends Fragment {
 
                 Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,alcool,ouvert);
 
+                String CreaSoiree = soirée.toString();
 
-
-/*
-            Bundle dataCreaSoiree = new Bundle();
-                dataCreaSoiree.putString("tvAdresse",adresse);
-                dataCreaSoiree.putString("tvVille",ville);
-                dataCreaSoiree.putString("tvDescription",description);
-                dataCreaSoiree.putString("prenomOrga",orga.getNom());
-                dataCreaSoiree.putString("nomOrga",orga.getPrenom());
- */
+                String Contenu =  this.readFromFile(getContext());
+                Log.i("Crea","String retournee du fichier : "+Contenu);
+                this.writeToFile(Contenu+"\n"+CreaSoiree,getContext());
+                Log.i("Crea","String crea soirée : "+CreaSoiree);
+                String ContenuApresCrea =  this.readFromFile(getContext());
+                Log.i("Crea","String retournee du fichier apres la création : "+ContenuApresCrea);
 
 
 
@@ -130,6 +137,45 @@ public class SecondFragment extends Fragment {
 
                 //NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
 
+            }
+            private String readFromFile(Context context) {
+
+                String ret = "";
+
+                try {
+                    InputStream inputStream = context.openFileInput("donnees.txt");
+
+                    if ( inputStream != null ) {
+                        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                        String receiveString = "";
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        while ( (receiveString = bufferedReader.readLine()) != null ) {
+                            stringBuilder.append("\n").append(receiveString);
+                        }
+
+                        inputStream.close();
+                        ret = stringBuilder.toString();
+                    }
+                }
+                catch (FileNotFoundException e) {
+                    Log.e("login activity", "File not found: " + e.toString());
+                } catch (IOException e) {
+                    Log.e("login activity", "Can not read file: " + e.toString());
+                }
+
+                return ret;
+            }
+            private void writeToFile(String data,Context context) {
+                try {
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.txt", Context.MODE_PRIVATE));
+                    outputStreamWriter.write(data);
+                    outputStreamWriter.close();
+                }
+                catch (IOException e) {
+                    Log.e("Exception", "File write failed: " + e.toString());
+                }
             }
         });
     }

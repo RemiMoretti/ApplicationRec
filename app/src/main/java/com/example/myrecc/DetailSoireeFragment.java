@@ -144,13 +144,13 @@ public class DetailSoireeFragment extends Fragment {
     public void createdOnView(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btSupprimer.setOnClickListener(new View.OnClickListener() {
+       /*   binding.btSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+          public void onClick(View v) {
                 remove lesSoirees(extras().get("position"));
                 getArguments().getInt("position");
-            }
-        });
+
+        });  }*/
     }
 
 
