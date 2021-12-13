@@ -103,13 +103,18 @@ public class SecondFragment extends Fragment {
                 if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertOui.getId()) {ouvert=1;}
                 else if(radioOuvert.getCheckedRadioButtonId() == binding.rbOuvertNon.getId()) {ouvert=0;}
 
-                Soiree soirée = new Soiree(orga,adresse,ville,cp,date,heure,description,alcool,ouvert);
+                Soiree soiree = new Soiree(orga,adresse,ville,cp,date,heure,description,alcool,ouvert);
 
-                String CreaSoiree = soirée.toString();
+                String CreaSoiree = soiree.toString();
 
                 String Contenu =  this.readFromFile(getContext());
+                int LenContenu = Contenu.length();
+                Contenu.substring(0,LenContenu-3);
+                Log.i("Crea","Contenu "+Contenu);
+
+
                 Log.i("Crea","String retournee du fichier : "+Contenu);
-                this.writeToFile(Contenu+"\n"+CreaSoiree,getContext());
+                this.writeToFile(Contenu.substring(0,LenContenu-2)+","+CreaSoiree,getContext());
                 Log.i("Crea","String crea soirée : "+CreaSoiree);
                 String ContenuApresCrea =  this.readFromFile(getContext());
                 Log.i("Crea","String retournee du fichier apres la création : "+ContenuApresCrea);
@@ -135,7 +140,9 @@ public class SecondFragment extends Fragment {
                 fragmentTransaction.addToBackStack(null);
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, fragment).commit();
 
-                //NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
+
+
+                                //NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_detail_Soiree);
 
             }
             private String readFromFile(Context context) {
@@ -143,7 +150,7 @@ public class SecondFragment extends Fragment {
                 String ret = "";
 
                 try {
-                    InputStream inputStream = context.openFileInput("donnees.txt");
+                    InputStream inputStream = context.openFileInput("donnees.json");
 
                     if ( inputStream != null ) {
                         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -169,8 +176,8 @@ public class SecondFragment extends Fragment {
             }
             private void writeToFile(String data,Context context) {
                 try {
-                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.txt", Context.MODE_PRIVATE));
-                    outputStreamWriter.write(data);
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.json", Context.MODE_PRIVATE));
+                    outputStreamWriter.write(data+"]}");
                     outputStreamWriter.close();
                 }
                 catch (IOException e) {

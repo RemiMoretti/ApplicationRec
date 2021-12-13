@@ -94,15 +94,14 @@ public class Soiree {
 
     @Override
     public String toString() {
-        return "Soiree{" + orga +
-                ", adresse='" + adresse + '\'' +
-                ", CP=" + CP +
-                ", ville='" + ville + '\'' +
-                ", date='" + date + '\'' +
-                ", heure='" + heure + '\'' +
-                ", description='" + description + '\'' +
-                ", alcool=" + alcool +
-                ", soireeOuverte=" + soireeOuverte +
-                '}';
-    }
+        return orga +
+                ",\"adresse\":" + "\""+adresse + "\""+
+                ",\"CP\":" + CP +
+                ",\"ville\":" + "\""+ville + "\"" +
+                ",\"date\":" + "\""+date + "\"" +
+                ",\"heure\":" + "\""+heure + "\"" +
+                ",\"description\":" + "\""+description + "\"" +
+                ",\"alcool\":" + alcool +
+                ",\"soireeOuverte\":" + soireeOuverte +
+                "},"   ;}
 }
