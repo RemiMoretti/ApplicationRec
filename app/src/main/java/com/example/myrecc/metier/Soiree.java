@@ -95,7 +95,7 @@ public class Soiree {
     @Override
     public String toString() {
         return "Soiree{" +
-                "orga=" + orga + "\n"+
+                "orga=" + orga +
                 ", adresse='" + adresse + '\'' +
                 ", CP=" + CP +
                 ", ville='" + ville + '\'' +

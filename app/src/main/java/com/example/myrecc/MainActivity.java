@@ -1,5 +1,6 @@
 package com.example.myrecc;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -29,6 +30,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +52,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Verification de l'existance du fichier donnees.txt
 
+        String donnee = this.readFromFile(getApplicationContext());
+        if (donnee.isEmpty()){
+            CompteUtilisateur cu1 = new CompteUtilisateur("Pesquet", "Thomas", 50, "rue spatial", 17000, "thomas@nasa.com", "toto", "123");
+            CompteUtilisateur cu2 = new CompteUtilisateur("Hollande", "François", 55, "rue de la république", 54211, "holland@elysé.com", "president", "000");
+            CompteUtilisateur cu3 = new CompteUtilisateur("Quiroule", "Pierre", 22, "rue de la grotte", 56000, "pierre@tombe.com", "pepe", "456");
+            CompteUtilisateur cu4 = new CompteUtilisateur("Lateur", "Venti", 64, "rue du vent", 14700, "vent@souffle.com", "fort", "999");
+            CompteUtilisateur cu5 = new CompteUtilisateur("Mie", "Calline", 12, "rue de la boulangerie", 64000, "boulan@gerie.com", "boubou", "200");
+            CompteUtilisateur cu6 = new CompteUtilisateur("Mortred", "Anthony", 19, "13 rue de la moelle", 16954, "anthony@mortred.com", "Anth0nyM0", "oui");
+
+            String data =
+                    "Soiree("+cu2.toString()+",14 rue des collombes\", \"Paris\", 93000, \"30 Novembre\", \"20h00\", \"Soiree sympa pour faire des potes\", 1, 1);\n" +
+                    "Soiree("+cu2.toString()+",25 rue des flammes\", \"Aix\", 13080, \"2 Décembre\", \"21h00\", \"Soiree pour se faire du bien, pour oublier nos problèmes\", 1, 1);\n" +
+                    "Soiree("+cu2.toString()+",78 place des Agences\", \"Bordeaux\", 30072, \"3 Décembre\", \"19h00\", \"Soiree pour passer un bon temps, pas de souci, pas trop de monde\", 0, 0);\n" +
+                    "Soiree("+cu2.toString()+",44 rue Pierre Loti\", \"Rochefort\", 17300, \"25 Décembre\", \"00h00\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
+                    "Soiree("+cu2.toString()+",11 rue de Gaule\", \"Saintes\", 26000, \"12 Décembre\", \"17h30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 1);\n" +
+                    "Soiree("+cu2.toString()+",40 Place du centre\", \"Surgères\", 14004, \"4 Janvier\", \"22h30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 0);\n" +
+                    "Soiree("+cu2.toString()+",22 rue du collisé\", \"Tours\", 50200, \"22 Février\", \"12h00\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n" +
+                    "Soiree("+cu3.toString()+",Avenue de la liberté\", \"Lille\", 54000, \"19 Juin\", \"22:15\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 1);\n" +
+                    "Soiree("+cu3.toString()+",Les champs elysées\", \"Paris\", 93000, \"31 Decembre\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 0);\n" +
+                    "Soiree("+cu4.toString()+",95 rue du metro\", \"Brest\", 59000, \"16 Aout\", \"19:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
+                    "Soiree("+cu5.toString()+",113 rue Robespierre\", \"Toulouse\", 94989, \"25 Novembre\", \"17:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n" +
+                    "Soiree("+cu6.toString()+",13 rue de la moelle\", \"Rochefort\", 16954, \"17 Mars\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n";
+            this.writeToFile(data,getApplicationContext());
+        }
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -243,6 +275,44 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    private String readFromFile(Context context) {
 
+        String ret = "";
+
+        try {
+            InputStream inputStream = context.openFileInput("donnees.txt");
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append("\n").append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+
+        return ret;
+    }
+    private void writeToFile(String data,Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
 
 }
