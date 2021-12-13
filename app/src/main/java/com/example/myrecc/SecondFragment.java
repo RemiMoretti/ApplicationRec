@@ -158,8 +158,8 @@ public class SecondFragment extends Fragment {
                         String receiveString = "";
                         StringBuilder stringBuilder = new StringBuilder();
 
-                        while ( (receiveString = bufferedReader.readLine()) != null ) {
-                            stringBuilder.append("\n").append(receiveString);
+                        while ((receiveString = bufferedReader.readLine()) != null ) {
+                            stringBuilder.append(receiveString);
                         }
 
                         inputStream.close();
