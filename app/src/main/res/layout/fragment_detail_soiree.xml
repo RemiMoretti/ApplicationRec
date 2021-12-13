@@ -94,36 +94,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.852" />
 
+
     <Button
         android:id="@+id/btRetourMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="265dp"
-        tools:layout_editor_absoluteY="646dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
 
         android:text="@string/retour_la_liste"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="0.883" />
 
     <Button
         android:id="@+id/btSupprimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
-        android:text="Supprimer la soirée"
+        android:text="@string/supprimer_la_soiree"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btRetourMenu"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945" />
-
-
-
+        app:layout_constraintVertical_bias="0.962" />
 
     <TextView
         android:id="@+id/tvDescCreateur"

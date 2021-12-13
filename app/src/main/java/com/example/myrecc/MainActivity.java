@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
             lesSoirees.add(so10);
             lesSoirees.add(so11);
             lesSoirees.add(so12);
+
+
         }
         String données = this.readFromFile(getApplicationContext());
         Log.i("Donn","Donnees : "+données);
@@ -239,6 +241,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
+
+
+    //Si on arrive sur la page de recherche
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -284,8 +292,8 @@ public class MainActivity extends AppCompatActivity {
                 String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
 
-                while ( (receiveString = bufferedReader.readLine()) != null ) {
-                    stringBuilder.append("\n").append(receiveString);
+                while ((receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
                 }
 
                 inputStream.close();
