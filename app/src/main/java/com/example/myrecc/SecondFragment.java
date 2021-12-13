@@ -109,15 +109,7 @@ public class SecondFragment extends Fragment {
 
                 String Contenu =  this.readFromFile(getContext());
                 int LenContenu = Contenu.length();
-                Contenu.substring(0,LenContenu-3);
-                Log.i("Crea","Contenu "+Contenu);
-
-
-                Log.i("Crea","String retournee du fichier : "+Contenu);
-                this.writeToFile(Contenu.substring(0,LenContenu-2)+","+CreaSoiree,getContext());
-                Log.i("Crea","String crea soirée : "+CreaSoiree);
-                String ContenuApresCrea =  this.readFromFile(getContext());
-                Log.i("Crea","String retournee du fichier apres la création : "+ContenuApresCrea);
+                this.writeToFile(Contenu.substring(0,LenContenu-3)+","+CreaSoiree,getContext());
 
 
 
