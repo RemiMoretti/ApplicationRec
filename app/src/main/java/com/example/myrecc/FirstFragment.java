@@ -35,7 +35,7 @@ public class FirstFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -46,40 +46,15 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        this.Initialisation();
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         layoutManager =  new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         Bundle extra = getArguments();
 
-        if(lesSoirees.isEmpty()){
-            Log.i("reset", "reset des données");
-            this.Initialisation();
-        }
+        adapter = new SoireeAdapter(lesSoirees);
 
-        if(extra!=null) {
-            if (extra.get("ville") != null) {
-                List<Soiree> soireesRecherchees = new ArrayList<>();
-                for (Soiree soiree : lesSoirees) {
-                    Log.i("foreach hors if", "ville de la soiree ->" + soiree.getVille().toLowerCase() + " valeur du extra ->" + extra.getString("ville").toLowerCase());
-                    if (soiree.getVille().trim().equalsIgnoreCase(extra.getString("ville").trim())) {
-                        Log.i("foreach dans if", "ville de la soiree ->" + soiree.getVille());
-                        soireesRecherchees.add(soiree);
-                    }
-                }
-
-                //si il y a des soirées dans la ville indiquée on affiche le résultat de la recherche
-                if (!soireesRecherchees.isEmpty()) {
-                    adapter = new SoireeAdapter(soireesRecherchees);
-                    Log.i("adapter", "l'adapter existe");
-                } else {
-                    adapter = new SoireeAdapter(lesSoirees);
-                }
-            }
-        } else {
-            adapter = new SoireeAdapter(lesSoirees);
-        }
         recyclerView.setAdapter(adapter);
 
 
@@ -94,9 +69,21 @@ public class FirstFragment extends Fragment {
                 Log.i("intent extra ville", "valeur de recherche = "+ville);
                 search.putExtra("ville", ville);
                 v.getContext().startActivity(search);*/
-                recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-                layoutManager =  new LinearLayoutManager(view.getContext());
-                recyclerView.setLayoutManager(layoutManager);
+                List<Soiree> soireesRecherchees = new ArrayList<>();
+                for (Soiree soiree : lesSoirees) {
+                    Log.i("foreach hors if", "ville de la soiree ->" + soiree.getVille().toLowerCase() + " valeur du extra ->" + ville.toLowerCase());
+                    if (soiree.getVille().trim().equalsIgnoreCase(ville.trim())) {
+                        Log.i("foreach dans if", "ville de la soiree ->" + soiree.getVille());
+                        soireesRecherchees.add(soiree);
+                    }
+                }
+                if (!soireesRecherchees.isEmpty()) {
+                    adapter = new SoireeAdapter(soireesRecherchees);
+                    Log.i("adapter", "l'adapter existe");
+                } else {
+                    adapter = new SoireeAdapter(lesSoirees);
+                }
+                recyclerView.setAdapter(adapter);
             }
         });
 

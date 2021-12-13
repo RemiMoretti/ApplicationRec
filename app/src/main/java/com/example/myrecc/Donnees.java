@@ -48,8 +48,8 @@ public class Donnees {
 
 
     //création de la liste des soirées
-
-        /*lesSoirees.add(so1);
+/*
+        lesSoirees.add(so1);
         lesSoirees.add(so2);
         lesSoirees.add(so3);
         lesSoirees.add(so4);
@@ -61,4 +61,5 @@ public class Donnees {
         lesSoirees.add(so10);
         lesSoirees.add(so11);
         lesSoirees.add(so12);*/
+
 }

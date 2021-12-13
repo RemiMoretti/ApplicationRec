@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        Bundle extra = getIntent().getExtras();
         setContentView(binding.getRoot());
+
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -120,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             adapter = new SoireeAdapter(lesSoirees);
         }
         recyclerView.setAdapter(adapter);*/
+<<<<<<< Updated upstream
         Bundle extra = getIntent().getExtras();
         extra.putInt("position", Integer.parseInt(extra.get("position").toString()));
 
@@ -157,6 +161,24 @@ public class MainActivity extends AppCompatActivity {
             adapter = new SoireeAdapter(lesSoirees);
         }
         recyclerView.setAdapter(adapter);
+=======
+        if(extra!=null){
+            if(extra.get("detail")!=null){
+                Fragment detailSoiree = new DetailSoireeFragment();
+                Bundle bundle = new Bundle();
+                Log.i("position", "position n°"+extra.get("position"));
+
+                String desc = extra.get("detail").toString();
+                bundle.putString("desc",desc);
+
+                detailSoiree.setArguments(bundle);
+
+                ///navController.navigate(R.id.detailDeSoiree);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+            }
+        }
+>>>>>>> Stashed changes
     }
 
 
@@ -240,12 +262,14 @@ public class MainActivity extends AppCompatActivity {
             /*Intent create = new Intent(this.getApplicationContext(), MainActivity.class);
             create.putExtra("creer", 1);
             startActivity(create);*/
-            //Fragment creerSoiree = new SecondFragment();ut.fragment_first)
+            //Fragment creerSoiree = new SecondFragment();
             //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, creerSoiree).commit();
             navController.navigate(R.id.creerUneSoiree);
             return true;
         }
         else if (id == R.id.action_recherchesoiree) {
+            //Fragment rechercheSoiree = new FirstFragment();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, rechercheSoiree).commit();
             navController.navigate(R.id.rechercheUneSoiree);
             return true;
         }
@@ -260,5 +284,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

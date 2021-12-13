@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
@@ -73,7 +76,15 @@ public class SoireeViewHolder extends RecyclerView.ViewHolder implements View.On
         Fragment detailSoiree = new DetailSoireeFragment();
 
         detailSoiree.setArguments(data);
-        //MainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+
+        Context context = v.getContext();
+
+        Intent detail = new Intent(v.getContext(), MainActivity.class);
+        detail.putExtra("detail", donnees);
+        detail.putExtra("position", position);
+        context.startActivity(detail);
+        //NavHostFragment.findNavController(detailSoiree).navigate(R.id.detailSoiree);
+
 
         //v.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
 

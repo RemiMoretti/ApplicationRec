@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrecc.databinding.FragmentDetailSoireeBinding;
 import com.example.myrecc.metier.Soiree;
@@ -90,8 +92,14 @@ public class DetailSoireeFragment extends Fragment {
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< Updated upstream
                 Intent retour = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(retour);
+=======
+                NavHostFragment.findNavController(DetailSoireeFragment.this).navigate(R.id.rechercheUneSoiree);
+                //Intent retour = new Intent(view.getContext(), MainActivity.class);
+                //view.getContext().startActivity(retour);
+>>>>>>> Stashed changes
             }
         });
 
@@ -107,12 +115,20 @@ public class DetailSoireeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+<<<<<<< Updated upstream
+=======
+        //C'est ici qu'on va modifier les TextView
+        /*binding.tvDescSoiree.setText("Bonjour je suis monsieur TextView qui annonce la description de la soirée");
+        binding.tvDescCreateur.setText("Bonjour je suis monsieur TextView qui annonce la description du créateur");
+        binding.tvParticipants.setText("Bonjour je suis monsieur TextView qui annonce la liste des participants");*/
+
+>>>>>>> Stashed changes
         binding.btRetourMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //NavHostFragment.findNavController(DetailSoireeFragment.this).navigate(R.id.action_Detail_to_FirstFragment);
-                Intent retour = new Intent(view.getContext(), MainActivity.class);
-                view.getContext().startActivity(retour);
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main).navigate(R.id.rechercheUneSoiree);
+                //Intent retour = new Intent(view.getContext(), MainActivity.class);
+                //view.getContext().startActivity(retour);
             }
         });
     }
