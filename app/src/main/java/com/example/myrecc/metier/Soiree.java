@@ -94,12 +94,16 @@ public class Soiree {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         return "Soiree{" +
                 "orga=" + orga +
 =======
         return "Soiree{" + orga +
 >>>>>>> Stashed changes
+=======
+        return "Soiree{" + orga +
+>>>>>>> main
                 ", adresse='" + adresse + '\'' +
                 ", CP=" + CP +
                 ", ville='" + ville + '\'' +

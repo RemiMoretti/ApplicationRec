@@ -63,8 +63,34 @@ public class MainActivity extends AppCompatActivity {
             CompteUtilisateur cu5 = new CompteUtilisateur("Mie", "Calline", 12, "rue de la boulangerie", 64000, "boulan@gerie.com", "boubou", "200");
             CompteUtilisateur cu6 = new CompteUtilisateur("Mortred", "Anthony", 19, "13 rue de la moelle", 16954, "anthony@mortred.com", "Anth0nyM0", "oui");
 
+            Soiree so1 = new Soiree(cu2, "14 rue des collombes", "Paris", 93000, "30 Novembre", "20h00", "Soiree sympa pour faire des potes", 1, 1);
+            Soiree so2 = new Soiree(cu2, "25 rue des flammes", "Aix", 13080, "2 Décembre", "21h00", "Soiree pour se faire du bien, pour oublier nos problèmes", 1, 1);
+            Soiree so3 = new Soiree(cu2, "78 place des Agences", "Bordeaux", 30072, "3 Décembre", "19h00", "Soiree pour passer un bon temps, pas de souci, pas trop de monde", 0, 0);
+            Soiree so4 = new Soiree(cu2, "44 rue Pierre Loti", "Rochefort", 17300, "25 Décembre", "00h00", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 0);
+            Soiree so5 = new Soiree(cu2, "11 rue de Gaule", "Saintes", 26000, "12 Décembre", "17h30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 0, 1);
+            Soiree so6 = new Soiree(cu2, "40 Place du centre", "Surgères", 14004, "4 Janvier", "22h30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 0, 0);
+            Soiree so7 = new Soiree(cu2, "22 rue du collisé", "Tours", 50200, "22 Février", "12h00", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
+            Soiree so8 = new Soiree(cu3, "Avenue de la liberté", "Lille", 54000, "19 Juin", "22:15", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 0, 1);
+            Soiree so9 = new Soiree(cu3, "Les champs elysées", "Paris", 93000, "31 Decembre", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 0, 0);
+            Soiree so10 = new Soiree(cu4, "95 rue du metro", "Brest", 59000, "16 Aout", "19:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 0);
+            Soiree so11 = new Soiree(cu5, "113 rue Robespierre", "Toulouse", 94989, "25 Novembre", "17:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
+            Soiree so12 = new Soiree(cu6, "13 rue de la moelle", "Rochefort", 16954, "17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
+
             String data =
-                    "Soiree("+cu2.toString()+",14 rue des collombes\", \"Paris\", 93000, \"30 Novembre\", \"20h00\", \"Soiree sympa pour faire des potes\", 1, 1);\n" +
+                    so1.toString()+"\n"+
+                            so2.toString()+"\n"+
+                            so3.toString()+"\n"+
+                            so4.toString()+"\n"+
+                            so5.toString()+"\n"+
+                            so6.toString()+"\n"+
+                            so7.toString()+"\n"+
+                            so8.toString()+"\n"+
+                            so9.toString()+"\n"+
+                            so10.toString()+"\n"+
+                            so11.toString()+"\n"+
+                            so12.toString();
+
+                /*    "Soiree("+cu2.toString()+",14 rue des collombes\", \"Paris\", 93000, \"30 Novembre\", \"20h00\", \"Soiree sympa pour faire des potes\", 1, 1);\n" +
                     "Soiree("+cu2.toString()+",25 rue des flammes\", \"Aix\", 13080, \"2 Décembre\", \"21h00\", \"Soiree pour se faire du bien, pour oublier nos problèmes\", 1, 1);\n" +
                     "Soiree("+cu2.toString()+",78 place des Agences\", \"Bordeaux\", 30072, \"3 Décembre\", \"19h00\", \"Soiree pour passer un bon temps, pas de souci, pas trop de monde\", 0, 0);\n" +
                     "Soiree("+cu2.toString()+",44 rue Pierre Loti\", \"Rochefort\", 17300, \"25 Décembre\", \"00h00\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
@@ -75,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     "Soiree("+cu3.toString()+",Les champs elysées\", \"Paris\", 93000, \"31 Decembre\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 0);\n" +
                     "Soiree("+cu4.toString()+",95 rue du metro\", \"Brest\", 59000, \"16 Aout\", \"19:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
                     "Soiree("+cu5.toString()+",113 rue Robespierre\", \"Toulouse\", 94989, \"25 Novembre\", \"17:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n" +
-                    "Soiree("+cu6.toString()+",13 rue de la moelle\", \"Rochefort\", 16954, \"17 Mars\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n";
+                    "Soiree("+cu6.toString()+",13 rue de la moelle\", \"Rochefort\", 16954, \"17 Mars\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n";*/
             this.writeToFile(data,getApplicationContext());
         }
         super.onCreate(savedInstanceState);
