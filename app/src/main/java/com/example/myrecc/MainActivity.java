@@ -48,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private List<Soiree> lesSoirees = new ArrayList<>();
+    List<Soiree> lesSoirees = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Verification de l'existance du fichier donnees.txt
 
         String donnee = this.readFromFile(getApplicationContext());
+        Log.i("Donn","Donnees : "+donnee);
         if (donnee.isEmpty()){
             CompteUtilisateur cu1 = new CompteUtilisateur("Pesquet", "Thomas", 50, "rue spatial", 17000, "thomas@nasa.com", "toto", "123");
             CompteUtilisateur cu2 = new CompteUtilisateur("Hollande", "François", 55, "rue de la république", 54211, "holland@elysé.com", "president", "000");
@@ -76,34 +77,39 @@ public class MainActivity extends AppCompatActivity {
             Soiree so11 = new Soiree(cu5, "113 rue Robespierre", "Toulouse", 94989, "25 Novembre", "17:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
             Soiree so12 = new Soiree(cu6, "13 rue de la moelle", "Rochefort", 16954, "17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
 
-            String data =
-                    so1.toString()+"\n"+
-                            so2.toString()+"\n"+
-                            so3.toString()+"\n"+
-                            so4.toString()+"\n"+
-                            so5.toString()+"\n"+
-                            so6.toString()+"\n"+
-                            so7.toString()+"\n"+
-                            so8.toString()+"\n"+
-                            so9.toString()+"\n"+
-                            so10.toString()+"\n"+
-                            so11.toString()+"\n"+
+            String data ="{\"lesSoiree\":["+
+                    so1.toString()+
+                            so2.toString()+","+
+                            so3.toString()+","+
+                            so4.toString()+","+
+                            so5.toString()+","+
+                            so6.toString()+","+
+                            so7.toString()+","+
+                            so8.toString()+","+
+                            so9.toString()+","+
+                            so10.toString()+","+
+                            so11.toString()+","+
                             so12.toString();
 
-                /*    "Soiree("+cu2.toString()+",14 rue des collombes\", \"Paris\", 93000, \"30 Novembre\", \"20h00\", \"Soiree sympa pour faire des potes\", 1, 1);\n" +
-                    "Soiree("+cu2.toString()+",25 rue des flammes\", \"Aix\", 13080, \"2 Décembre\", \"21h00\", \"Soiree pour se faire du bien, pour oublier nos problèmes\", 1, 1);\n" +
-                    "Soiree("+cu2.toString()+",78 place des Agences\", \"Bordeaux\", 30072, \"3 Décembre\", \"19h00\", \"Soiree pour passer un bon temps, pas de souci, pas trop de monde\", 0, 0);\n" +
-                    "Soiree("+cu2.toString()+",44 rue Pierre Loti\", \"Rochefort\", 17300, \"25 Décembre\", \"00h00\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
-                    "Soiree("+cu2.toString()+",11 rue de Gaule\", \"Saintes\", 26000, \"12 Décembre\", \"17h30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 1);\n" +
-                    "Soiree("+cu2.toString()+",40 Place du centre\", \"Surgères\", 14004, \"4 Janvier\", \"22h30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 0);\n" +
-                    "Soiree("+cu2.toString()+",22 rue du collisé\", \"Tours\", 50200, \"22 Février\", \"12h00\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n" +
-                    "Soiree("+cu3.toString()+",Avenue de la liberté\", \"Lille\", 54000, \"19 Juin\", \"22:15\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 1);\n" +
-                    "Soiree("+cu3.toString()+",Les champs elysées\", \"Paris\", 93000, \"31 Decembre\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 0, 0);\n" +
-                    "Soiree("+cu4.toString()+",95 rue du metro\", \"Brest\", 59000, \"16 Aout\", \"19:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 0);\n" +
-                    "Soiree("+cu5.toString()+",113 rue Robespierre\", \"Toulouse\", 94989, \"25 Novembre\", \"17:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n" +
-                    "Soiree("+cu6.toString()+",13 rue de la moelle\", \"Rochefort\", 16954, \"17 Mars\", \"21:30\", \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\", 1, 1);\n";*/
             this.writeToFile(data,getApplicationContext());
+
+            //création de la liste des soirées
+            lesSoirees.add(so1);
+            lesSoirees.add(so2);
+            lesSoirees.add(so3);
+            lesSoirees.add(so4);
+            lesSoirees.add(so5);
+            lesSoirees.add(so6);
+            lesSoirees.add(so7);
+            lesSoirees.add(so8);
+            lesSoirees.add(so9);
+            lesSoirees.add(so10);
+            lesSoirees.add(so11);
+            lesSoirees.add(so12);
         }
+        String données = this.readFromFile(getApplicationContext());
+        Log.i("Donn","Donnees : "+données);
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -228,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void Initialisation() {
+/*    public void Initialisation() {
         //Création des faux utilisateurs
         CompteUtilisateur cu1 = new CompteUtilisateur("Pesquet", "Thomas", 50, "rue spatial", 17000, "thomas@nasa.com", "toto", "123");
         CompteUtilisateur cu2 = new CompteUtilisateur("Hollande", "François", 55, "rue de la république", 54211, "holland@elysé.com", "president", "000");
@@ -265,22 +271,21 @@ public class MainActivity extends AppCompatActivity {
         Soiree so10 = new Soiree(cu4, "95 rue du metro", "Brest", 59000, "16 Aout", "19:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 0);
         Soiree so11 = new Soiree(cu5, "113 rue Robespierre", "Toulouse", 94989, "25 Novembre", "17:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
         Soiree so12 = new Soiree(cu6, "13 rue de la moelle", "Rochefort", 16954, "17 Mars", "21:30", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1, 1);
+            //création de la liste des soirées
+            lesSoirees.add(so1);
+            lesSoirees.add(so2);
+            lesSoirees.add(so3);
+            lesSoirees.add(so4);
+            lesSoirees.add(so5);
+            lesSoirees.add(so6);
+            lesSoirees.add(so7);
+            lesSoirees.add(so8);
+            lesSoirees.add(so9);
+            lesSoirees.add(so10);
+            lesSoirees.add(so11);
+            lesSoirees.add(so12);
 
-
-        //création de la liste des soirées
-        lesSoirees.add(so1);
-        lesSoirees.add(so2);
-        lesSoirees.add(so3);
-        lesSoirees.add(so4);
-        lesSoirees.add(so5);
-        lesSoirees.add(so6);
-        lesSoirees.add(so7);
-        lesSoirees.add(so8);
-        lesSoirees.add(so9);
-        lesSoirees.add(so10);
-        lesSoirees.add(so11);
-        lesSoirees.add(so12);
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -319,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
         String ret = "";
 
         try {
-            InputStream inputStream = context.openFileInput("donnees.txt");
+            InputStream inputStream = context.openFileInput("donnees.json");
 
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -345,8 +350,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void writeToFile(String data,Context context) {
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("donnees.json", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data+"]}");
             outputStreamWriter.close();
         }
         catch (IOException e) {

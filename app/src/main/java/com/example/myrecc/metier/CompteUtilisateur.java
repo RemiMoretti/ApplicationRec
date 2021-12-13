@@ -71,15 +71,15 @@ public class CompteUtilisateur {
 
     @Override
     public String toString() {
-        return "CompteUtilisateur{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", age=" + age +
-                ", adresse='" + adresse + '\'' +
-                ", CP=" + CP +
-                ", mail='" + mail + '\'' +
-                ", login='" + login + '\'' +
-                ", mdp='" + mdp + '\'' +
+        return "{\"Organisateur\":{" +
+                "\"nom\":" +"\""+ nom + "\""+
+                ",\"prenom\":" + "\""+prenom + "\""+
+                ",\"age\":" +age +
+                ",\"adresse\":" +"\""+ adresse + "\""+
+                ",\"CP\":" + CP +
+                ",\"mail\":" + "\""+mail + "\""+
+                ",\"login\":" + "\""+login + "\""+
+                ",\"mdp\":" + "\""+mdp + "\""+
                 '}';
     }
 }
