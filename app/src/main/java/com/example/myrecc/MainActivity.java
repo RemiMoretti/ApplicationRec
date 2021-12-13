@@ -91,18 +91,16 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        /*recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         layoutManager =  new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);*/
+        recyclerView.setLayoutManager(layoutManager);
 
         //Initialisation des données en brut
-        /*if(lesSoirees.isEmpty()){
+        if(lesSoirees.isEmpty()){
             Log.i("reset", "reset des données");
             this.Initialisation();
         }
 
-        //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
-        Bundle extra = getIntent().getExtras();
 
         //Si on vient d'un autre fragment
         if(extra != null){
@@ -154,13 +152,8 @@ public class MainActivity extends AppCompatActivity {
         else {
             adapter = new SoireeAdapter(lesSoirees);
         }
-        recyclerView.setAdapter(adapter);*/
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        Bundle extra = getIntent().getExtras();
-        extra.putInt("position", Integer.parseInt(extra.get("position").toString()));
-=======
->>>>>>> main
+        recyclerView.setAdapter(adapter);
+
 
         if(extra!=null){
             if(extra.get("detail")!=null){
@@ -178,31 +171,27 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
             }
         }
-<<<<<<< HEAD
         else {
             adapter = new SoireeAdapter(lesSoirees);
         }
         recyclerView.setAdapter(adapter);
-=======
-        if(extra!=null){
-            if(extra.get("detail")!=null){
-                Fragment detailSoiree = new DetailSoireeFragment();
-                Bundle bundle = new Bundle();
-                Log.i("position", "position n°"+extra.get("position"));
-
-                String desc = extra.get("detail").toString();
-                bundle.putString("desc",desc);
-
-                detailSoiree.setArguments(bundle);
-
-                ///navController.navigate(R.id.detailDeSoiree);
-
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
-            }
-        }
->>>>>>> Stashed changes
-=======
->>>>>>> main
+//
+//        if(extra!=null){
+//            if(extra.get("detail")!=null){
+//                Fragment detailSoiree = new DetailSoireeFragment();
+//                Bundle bundle = new Bundle();
+//                Log.i("position", "position n°"+extra.get("position"));
+//
+//                String desc = extra.get("detail").toString();
+//                bundle.putString("desc",desc);
+//
+//                detailSoiree.setArguments(bundle);
+//
+//                ///navController.navigate(R.id.detailDeSoiree);
+//
+//                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, detailSoiree).commit();
+//            }
+//        }
     }
 
 
@@ -267,14 +256,6 @@ public class MainActivity extends AppCompatActivity {
         lesSoirees.add(so12);
     }
 
-
-    //récupération des extras (si jamais on doit faire une opération depuis un fragment vers un autre)
-
-
-    //Si on arrive sur la page de recherche
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -306,6 +287,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+<<<<<<< Updated upstream
     private String readFromFile(Context context) {
 
         String ret = "";
@@ -353,4 +335,6 @@ public class MainActivity extends AppCompatActivity {
 >>>>>>> Stashed changes
 =======
 >>>>>>> main
+=======
+>>>>>>> Stashed changes
 }

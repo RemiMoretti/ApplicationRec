@@ -3,14 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/Accueil">
+    app:startDestination="@id/FirstFragment">
 
-    <fragment
-        android:id="@+id/Accueil"
-        android:name="com.example.myrecc.Accueil"
-        android:label="@string/label"
-        tools:layout="@layout/accueil"
-        ></fragment>
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.myrecc.FirstFragment"
